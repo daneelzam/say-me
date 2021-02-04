@@ -1,23 +1,27 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
-    node: true,
+    node: true
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 12,
-    sourceType: 'module',
-  },
+  parser: 'babel-eslint',
+  extends: 'airbnb-base',
   plugins: [
-    'react',
+    'react'
   ],
   rules: {
+    'comma-dangle': ['error', 'never'],
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+    'class-methods-use-this': 'off'
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: [
+          '.js',
+          '.jsx'
+        ]
+      }
+    }
+  }
 };
