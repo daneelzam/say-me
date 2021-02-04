@@ -4,6 +4,8 @@ import {
 } from 'react-router-dom';
 import Login from './components/Account/Login/Login';
 import SignUp from './components/Account/SignUp/SignUp';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
 function App() {
   return (
