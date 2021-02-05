@@ -2,6 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route
 } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 import Login from './components/Account/Login/Login';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header/Header';
@@ -11,7 +12,8 @@ import Account from './components/Account/Account/Account';
 import Calendar from './components/Calendar/Calendar';
 
 function App() {
-  const isAuth = false;
+  // const isAuth = useSelector((state) => state.auth.isAuth);
+  const isAuth = true;
   const Logout = () => <div children="logout"/>;
 
   return (
