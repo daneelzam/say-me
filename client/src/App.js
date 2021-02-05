@@ -2,17 +2,16 @@ import React from 'react';
 import {
   BrowserRouter as Router, Switch, Link
 } from 'react-router-dom';
-import Login from './components/Account/Login/Login';
-// import SignUp from './components/Account/SignUp/SignUp';
+// import Login from './components/Account/Login/Login';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import AuthRouter from './hoc/AuthRouter';
+// import AuthRouter from './hoc/AuthRouter';
 import ProtectedRouter from './hoc/ProtectedRouter';
 import Account from './components/Account/Account/Account';
+import Calendar from './components/Calendar/Calendar';
 
 function App() {
   const isAuth = true;
-  const test2 = () => <div children="calendar"/>;
   const test3 = () => <div children="logout"/>;
   const renderHeader = () => {
     if (isAuth) {
@@ -40,10 +39,9 @@ function App() {
           {renderHeader()}
           {isAuth && <Footer/>}
           <Switch>
-            <AuthRouter Component={Login} path="/login"/>
-            {/* <AuthRouter Component={SignUp} path="/signup"/> */}
+            {/* <AuthRouter Component={Login} path="/login"/> */}
             <ProtectedRouter Component={Account} path="/account"/>
-            <ProtectedRouter Component={test2} path="/" exact/>
+            <ProtectedRouter Component={Calendar} path="/" />
             <ProtectedRouter Component={test3} path="/logout"/>
           </Switch>
         </div>
