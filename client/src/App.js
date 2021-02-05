@@ -26,9 +26,9 @@ function App() {
             <li>
               <Link to="/login">Login</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/signup">SignUp</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
     );
