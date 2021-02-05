@@ -19,7 +19,7 @@ router.route('/signup')
       });
       await user.save();
       req.session.user = user;
-      res.json(user);
+      res.json({ user });
     } catch (error) {
       res.json(error.message);
     }
@@ -33,7 +33,7 @@ router.route('/login')
     const user = await User.findOne({ email });
     try {
       if (user && (await bcrypt.compare(password, user.password))) {
-        res.json(user);
+        res.json({ user });
       }
     } catch
     (error) {

@@ -1,11 +1,15 @@
 import React, { useState, useRef } from 'react';
 import './Login.css';
+import { useDispatch } from 'react-redux';
+import { authErrorAC, authSuccessfullyAC } from '../../../redux/actionCreators/authAC';
 
 function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const containerRef = useRef();
+
+  const dispatch = useDispatch();
 
   function handleName(event) {
     setName(event.target.value);
@@ -38,7 +42,13 @@ function Login() {
       body: JSON.stringify({ email, password })
     })
       .then((response) => response.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        if (result.user) {
+          dispatch(authSuccessfullyAC(result.user));
+        } else {
+          dispatch(authErrorAC('Wrong email or password!'));
+        }
+      });
   };
 
   const signUpHandler = async (event) => {
@@ -52,7 +62,13 @@ function Login() {
       body: JSON.stringify({ name, email, password })
     })
       .then((response) => response.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        if (result.user) {
+          dispatch(authSuccessfullyAC(result.user));
+        } else {
+          dispatch(authErrorAC('Such user already exists'));
+        }
+      });
   };
 
   return (
