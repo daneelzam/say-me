@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 // import Login from './components/Account/Login/Login';
 import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
+import Header from './components/Header/Header/Header';
 // import AuthRouter from './hoc/AuthRouter';
 import ProtectedRouter from './hoc/ProtectedRouter';
 import Account from './components/Account/Account/Account';
