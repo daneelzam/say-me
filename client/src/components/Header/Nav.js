@@ -2,9 +2,7 @@ import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 
-function Nav() { 
-               v
-               
+function Nav() {
   return (
     <nav id="nav">
                 <ul>
@@ -13,7 +11,7 @@ function Nav() {
                     <li><Link to="/logout">Logout</Link></li>
                 </ul>
     </nav>
-   );
+  );
 }
 
 export default Nav;
