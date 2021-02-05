@@ -40,6 +40,11 @@ router.route('/login')
   });
 
 router.route('/logout')
-  .get();
+
+  .get(async (req, res) => {
+    await req.session.destroy();
+    res.clearCookie('auth');
+    res.end();
+  });
 
 export default router;
