@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Switch, Link
+  BrowserRouter as Router, Switch, Route, Link
 } from 'react-router-dom';
-// import Login from './components/Account/Login/Login';
+import Login from './components/Account/Login/Login';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header/Header';
 // import AuthRouter from './hoc/AuthRouter';
@@ -12,7 +12,7 @@ import Calendar from './components/Calendar/Calendar';
 
 function App() {
   const isAuth = true;
-  const test3 = () => <div children="logout"/>;
+  const Logout = () => <div children="logout"/>;
   const renderHeader = () => {
     if (isAuth) {
       return <Header/>;
@@ -39,10 +39,10 @@ function App() {
           {renderHeader()}
           {isAuth && <Footer/>}
           <Switch>
-            {/* <AuthRouter Component={Login} path="/login"/> */}
+              <Route path="/login"><Login/></Route>
             <ProtectedRouter Component={Account} path="/account"/>
             <ProtectedRouter Component={Calendar} path="/" />
-            <ProtectedRouter Component={test3} path="/logout"/>
+            <ProtectedRouter Component={Logout} path="auth/logout"/>
           </Switch>
         </div>
       </Router>
