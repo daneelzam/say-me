@@ -1,22 +1,22 @@
 /* Footer */
 
-#footer {
+.footer {
   position: absolute;
   width: 100%;
   bottom: 0;
-background: #282b34;
-color: #eee;
+  background: #282b34;
+  color: #eee;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 0;
 }
 
 /* Copyright */
 
-#copyright {
+.copyright {
 text-align: center;
 }
 
-#copyright ul {
+.copyright_ul {
 display: inline-block;
 border-radius: 0.35em;
 box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.05);
@@ -26,7 +26,7 @@ padding: 0.75em 2em;
 font-size: 0.9em;
 }
 
-#copyright ul li {
+.copyright_ul_li {
   display: inline-block;
   margin-left: 1em;
   padding-left: 1em;
@@ -34,16 +34,16 @@ font-size: 0.9em;
   border-left-color: rgba(255, 255, 255, 0.05);
 }
 
-  #copyright ul li:first-child {
+  .copyright_ul_li:first-child {
     border-left: 0;
     margin-left: 0;
     padding-left: 0;
   }
 
-#copyright a {
+.copyright_a {
 color: inherit;
 }
 
-#copyright a:hover {
+.copyright_a:hover {
   color: #fff;
       }
