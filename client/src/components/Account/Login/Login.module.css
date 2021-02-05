@@ -1,11 +1,7 @@
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-* {
+.body_for_login {
 	box-sizing: border-box;
-}
-
-body {
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
@@ -21,7 +17,7 @@ body {
 	margin: 0;
 }
 
-p {
+.p {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
@@ -29,7 +25,7 @@ p {
 	margin: 20px 0 30px;
 }
 
-a {
+.a {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
@@ -181,7 +177,7 @@ a {
 	text-align: center;
 	top: 0;
 	height: 100%;
-	width: 50%;
+	width: 40%;
 	transform: translateX(0);
 	transition: transform 0.6s ease-in-out;
 }
