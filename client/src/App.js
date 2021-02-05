@@ -13,7 +13,7 @@ import Calendar from './components/Calendar/Calendar';
 
 function App() {
   // const isAuth = useSelector((state) => state.auth.isAuth);
-  const isAuth = true;
+
   const Logout = () => <div children="logout"/>;
 
   return (
