@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import Day from '../Day/Day';
+import Day from './Day/Day';
 import './Calendar.css';
+import Month from './Month/Month';
 
 function Calendar() {
   const [date] = useState(new Date());
   const [year] = useState(date.getFullYear());
-  const [month] = useState(date.getMonth());
+  const [month, setMonth] = useState(date.getMonth());
   const [months] = useState(new Array(12).fill('1'));
-  const [dates] = useState(new Array(31).fill('1'));
+  const [dates] = useState(new Array(35).fill('1'));
   const [stringMonth] = useState({
     1: 'Jan',
     2: 'Feb',
@@ -29,23 +30,33 @@ function Calendar() {
                 <div className="content">
                     <h2 className="year">{year}</h2>
                     <ul className="months"> {months && months.map((el, i) => {
-                      if ((i) === +month) {
-                        return <li><a href="#" title={`${stringMonth[i + 1]}`} key={`${stringMonth[i + 1]}`} data-value={`${i + 1}`} className="selected">{`${stringMonth[i + 1]}`}</a></li>;
-                      }
-                      return <li><a href="#" title={`${stringMonth[i + 1]}`} key={`${stringMonth[i + 1]}`} data-value={`${i + 1}`}>{`${stringMonth[i + 1]}`}</a></li>;
+                      let active;
+                      i === +month ? active = 'selected' : active = '';
+                      return <Month key={`${stringMonth[i + 1]}`} strMonth={stringMonth[i + 1]} date={i + 1} active={active} setMonth={setMonth}/>;
                     })}
                     </ul>
-                    <ul className="weekday">
-                        <li><a href="#" title="Mon" data-value="1">Mon</a></li>
-                        <li><a href="#" title="Tue" data-value="2">Tue</a></li>
-                        <li><a href="#" title="Wed" data-value="3">Wed</a></li>
-                        <li><a href="#" title="Thu" data-value="4">Thu</a></li>
-                        <li><a href="#" title="Fri" data-value="5">Fri</a></li>
-                        <li><a href="#" title="Say" data-value="6">Sat</a></li>
-                        <li><a href="#" title="Sun" data-value="7">Sun</a></li>
-                    </ul>
+                    <table>
+                      <th className="weekday">
+                        <td><li><a title="Mon" data-value="1">Mon</a></li></td>
+                        <td><li><a title="Tue" data-value="2">Tue</a></li></td>
+                        <td><li><a title="Wed" data-value="3">Wed</a></li></td>
+                        <td><li><a title="Thu" data-value="4">Thu</a></li></td>
+                        <td><li><a title="Fri" data-value="5">Fri</a></li></td>
+                        <td><li><a title="Say" data-value="6">Sat</a></li></td>
+                        <td><li><a title="Sun" data-value="7">Sun</a></li></td>
+                      </th>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </table>
                     <ul className="days">
-                    {dates && dates.map((el, i) => <Day key={`${year}+${month}+${i}`} year={year} month={month} date={i}/>)}
+                    {dates && dates.map((el, i) => <Day key={`${year}+${month}+${i}`} year={year} month={month} date={i + 1}/>)}
                     </ul>
                 </div>
             </div>
