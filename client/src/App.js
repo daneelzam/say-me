@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Switch, Route, Link
+  BrowserRouter as Router, Switch, Route
 } from 'react-router-dom';
 import Login from './components/Account/Login/Login';
 import SignUp from './components/Account/SignUp/SignUp';
@@ -11,20 +11,7 @@ function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            {/* <li> */}
-            {/*  <Link to="/">Home</Link> */}
-            {/* </li> */}
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">SignUp</Link>
-            </li>
-          </ul>
-        </nav>
-
+       <Header/>
         <Switch>
           <Route path="/login">
             <Login />
@@ -36,7 +23,7 @@ function App() {
           {/*  <Home /> */}
           {/* </Route> */}
         </Switch>
-
+      <Footer/>
       </div>
     </Router>
   );
