@@ -10,6 +10,7 @@ router.route('/signup')
 
   .post(async (req, res) => {
     const { name, email, password } = req.body;
+    console.log(name, email, password);
     try {
       const user = new User({
         name,
@@ -28,6 +29,7 @@ router.route('/login')
 
   .post(async (req, res) => {
     const { email, password } = req.body;
+
     const user = await User.findOne({ email });
     try {
       if (user && (await bcrypt.compare(password, user.password))) {
