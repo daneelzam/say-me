@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Switch, Link
 } from 'react-router-dom';
 import Login from './components/Account/Login/Login';
-import SignUp from './components/Account/SignUp/SignUp';
+// import SignUp from './components/Account/SignUp/SignUp';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import AuthRouter from './hoc/AuthRouter';
@@ -27,9 +27,9 @@ function App() {
             <li>
               <Link to="/login">Login</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/signup">SignUp</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
     );
@@ -41,7 +41,7 @@ function App() {
           {isAuth && <Footer/>}
           <Switch>
             <AuthRouter Component={Login} path="/login"/>
-            <AuthRouter Component={SignUp} path="/signup"/>
+            {/* <AuthRouter Component={SignUp} path="/signup"/> */}
             <ProtectedRouter Component={Account} path="/account"/>
             <ProtectedRouter Component={test2} path="/" exact/>
             <ProtectedRouter Component={test3} path="/logout"/>
