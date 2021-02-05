@@ -11,7 +11,7 @@ import Account from './components/Account/Account/Account';
 import Calendar from './components/Calendar/Calendar';
 
 function App() {
-  const isAuth = false;
+  const isAuth = true;
   const Logout = () => <div children="logout"/>;
 
   return (
