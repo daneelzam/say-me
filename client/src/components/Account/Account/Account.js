@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './Account.css';
 import { useDispatch, useSelector } from 'react-redux';
-
+import style from './Account.module.css';
 import { partnerAC, pregnantAC } from '../../../redux/actionCreators/partnerAC';
+
 
 function Account() {
   const user = useSelector((state) => state.auth.user);
@@ -38,7 +38,6 @@ function Account() {
 
   function handleAccount(event) {
     event.preventDefault();
-    // console.log(parnerPassword);
     fetch(`http://localhost:4000/api/main/${user.id}`, {
       method: 'POST',
       headers: {
