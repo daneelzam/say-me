@@ -22,4 +22,14 @@ router.route('/')
     res.json(user);
   });
 
+router.post('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { email } = req.body;
+
+  const user = await User.findById(id);
+  user.partnerContact = email;
+  await user.save();
+  res.status(200).end();
+});
+
 export default router;
