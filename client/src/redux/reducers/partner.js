@@ -1,4 +1,4 @@
-import { PARTNER_ADD, GOAL_ADD } from '../types';
+import { PARTNER_ADD, GOAL_ADD, PARTNER_ERR } from '../types';
 
 const windowState = JSON.parse(window.localStorage.getItem('state'));
 
@@ -7,10 +7,11 @@ let preloadState = {};
 if (windowState && windowState.partner) {
   preloadState = {
     toGetPregnant: windowState.partner.toGetPregnant,
-    partnerContact: windowState.partner.partnerContact
+    partnerContact: windowState.partner.partnerContact,
+    err: null
   };
 } else {
-  preloadState = { toGetPregnant: true, partnerContact: '' };
+  preloadState = { toGetPregnant: true, partnerContact: '', err: null };
 }
 
 const partnerReducer = (state = preloadState, action) => {
@@ -19,6 +20,8 @@ const partnerReducer = (state = preloadState, action) => {
       return { ...state, partnerContact: action.payload };
     case GOAL_ADD:
       return { ...state, toGetPregnant: action.payload };
+    case PARTNER_ERR:
+      return { ...state, err: action.payload };
     default:
       return state;
   }
