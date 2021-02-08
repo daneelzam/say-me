@@ -26,12 +26,10 @@ router.post('/:id', async (req, res) => {
   const { id } = req.params;
   const { email } = req.body;
 
-  const user = await User.findById({ _id: id }, {
-    partnerContact: email,
-  });
+  const user = await User.findById(id);
+  user.partnerContact = email;
   await user.save();
-  console.log('ok');
-  res.send(200);
+  res.status(200).end();
 });
 
 export default router;
