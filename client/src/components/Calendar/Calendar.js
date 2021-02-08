@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Calendar.css';
+import style from './Calendar.module.css';
 import Month from './Month/Month';
 import Weeks from './Weeks/Weeks';
 
@@ -25,11 +26,21 @@ function Calendar() {
   });
   return (
     <section>
-        <div className="calendar container">
-            <div className="col rightCol">
-                <div className="content">
-                    <h2 className="year">{year}</h2>
-                    <ul className="months"> {months && months.map((el, i) => {
+        <div className={`${style.calendar} container`}>
+          <div className={`${style.calendar_col} ${style.leftCol}`}>
+          <div className={`${style.content}`}>
+            <h1 className={`${style.calendar_h1} date`}>Friday<span className={style.calendar_h1_span}>September 12th</span></h1>
+            <div className={style.notes}>
+              <p>Information about active date</p>
+            </div>
+            <button className={style.btn}>Select as start date of cycle</button>
+              <p className={`${style.tip}`}>"Tip of the day"</p>
+          </div>
+        </div>
+          <div className={`${style.calendar_col} ${style.rightCol}`}>
+                <div className={`${style.content}`}>
+                    <h2 className={`${style.calendar_h2} ${style.rightCol_h2} year`}>{year}</h2>
+                    <ul className={`${style.ul} ${style.month}`}> {months && months.map((el, i) => {
                       let active;
                       i === +month ? active = 'selected' : active = '';
                       return <Month
