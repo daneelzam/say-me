@@ -12,4 +12,4 @@ export const INNITIAL_USER = 'INNITIAL_USER';
 export const PARTNER_ADD = 'PARTNER_ADD';
 export const PARTNER_DELETE = 'PARTNER_DELETE';
 export const GOAL_ADD = 'GOAL_ADD';
-export const GOAL_CHANGE = 'GOAL_CHANGE';
+export const PARTNER_ERR = 'PARTNER_ERR';
