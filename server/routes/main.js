@@ -32,4 +32,13 @@ router.post('/:id', async (req, res) => {
   res.status(200).end();
 });
 
+router.post('/goal/:id', async (req, res) => {
+  const { id } = req.params;
+  const { toGetPregnant } = req.body;
+  const user = await User.findById(id);
+  user.toGetPregnant = toGetPregnant;
+  await user.save();
+  res.status(200).end();
+});
+
 export default router;

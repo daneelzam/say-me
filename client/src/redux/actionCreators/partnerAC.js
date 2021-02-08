@@ -1,6 +1,5 @@
-import { PARTNER_ADD } from '../types';
+import { PARTNER_ADD, GOAL_ADD } from '../types';
 
+export const partnerAC = (email) => ({ type: PARTNER_ADD, payload: email });
 
-const partnerAC = (email) => ({ type: PARTNER_ADD, payload: email });
-export default partnerAC;
-
+export const pregnantAC = (toGetPregnant) => ({ type: GOAL_ADD, payload: toGetPregnant });

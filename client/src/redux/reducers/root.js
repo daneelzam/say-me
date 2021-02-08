@@ -6,7 +6,7 @@ import calendarReducer from './calendar';
 const rootReducer = combineReducers({
   auth: authReducer,
   calendar: calendarReducer,
-  part: partnerReducer
+  partner: partnerReducer
 });
 
 export default rootReducer;
