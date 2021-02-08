@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import style from './Day.module.css';
 
 function Day({ year, month, date }) {
   const [currentDate] = useState(new Date(year, month, date));
   const setActive = (e) => {
-    e.target.classList.contains('selected') ? e.target.classList.remove('selected') : e.target.classList.add('selected');
+    e.target.classList.contains(`${style.days_td_selected}`) ? e.target.classList.remove(`${style.days_td_selected}`) : e.target.classList.add(`${style.days_td_selected}`);
   };
   return (
         <>
-            {currentDate && <td><a href="#" onClick={setActive} title={date} data-value={date}>{currentDate.getDate()}</a></td>}
+            {currentDate && <td className={style.days_td}
+            onClick={setActive}
+            title={date}
+            data-value={date}>{currentDate.getDate()}</td>}
         </>
   );
 }

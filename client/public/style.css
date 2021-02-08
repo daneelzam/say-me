@@ -8,4 +8,5 @@ body {
     min-height: 93vh;
     position: relative;
     padding-bottom: 7vh;
+    list-style: none;
 }
