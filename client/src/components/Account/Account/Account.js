@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './Account.module.css';
 import { partnerAC, pregnantAC } from '../../../redux/actionCreators/partnerAC';
 
-
 function Account() {
   const user = useSelector((state) => state.auth.user);
   const [partnerEmail, setPartnerEmail] = useState();
@@ -51,8 +50,8 @@ function Account() {
   }
 
   return (
-    <section id="main" className="container">
-        <span className="avatar"><img src="images/avatar.jpg" alt=""/></span>
+    <section id="main" className={style.main}>
+        <span><img src="images/avatar.jpg" alt=""/></span>
         <h1>Name: {user.name}</h1>
         <p>Email: {user.email}</p>
         <h1>Goal:</h1>
