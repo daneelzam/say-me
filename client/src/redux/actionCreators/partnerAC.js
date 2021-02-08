@@ -1,5 +1,6 @@
-import { PARTHER_ADD } from '../types';
+import { PARTNER_ADD } from '../types';
 
-const partherAC = (email) => ({ type: PARTHER_ADD, payload: email });
 
-export default partherAC;
+const partnerAC = (email) => ({ type: PARTNER_ADD, payload: email });
+export default partnerAC;
+

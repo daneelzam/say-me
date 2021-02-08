@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import './Account.css';
 import { useDispatch, useSelector } from 'react-redux';
-import partherAC from '../../../redux/actionCreators/partnerAC';
+
+import partnerAC from '../../../redux/actionCreators/partnerAC';
+
 
 function Account() {
   const user = useSelector((state) => state.auth.user);
-  const [partherPassword, setPartherPassword] = useState();
+  const [partnerPassword, setPartnerPassword] = useState();
   const dispatch = useDispatch();
 
-  function hadlePartnerPassword(event) {
-    setPartherPassword(event.target.value);
+  function handlePartnerPassword(event) {
+    setPartnerPassword(event.target.value);
   }
 
   function handleAccount(event) {
@@ -20,11 +22,13 @@ function Account() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email: partherPassword })
+
+      body: JSON.stringify({ email: partnerPassword })
     })
       .then((response) => (response.status === 200
-        ? dispatch(partherAC(partherPassword))
+        ? dispatch(partherAC(partnerPassword))
         : null));
+
   }
 
   return (
@@ -39,7 +43,7 @@ function Account() {
        <option>don't get pregnant</option>
      </select>
      <h1>Email partner</h1>
-     <input type="text" placeholder="Email Partner" onChange={hadlePartnerPassword} value={partherPassword}/>
+     <input type="text" placeholder="Email Partner" onChange={handlePartnerPassword} value={partnerPassword}/>
      <button>Add</button>
    </form>
   </section>
