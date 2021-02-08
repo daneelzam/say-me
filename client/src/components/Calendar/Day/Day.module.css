@@ -1,0 +1,22 @@
+.days_td{
+    width: 36px;
+	height: 24px;
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 12px;
+    color: #747978;
+}
+
+.days_td:hover{
+	background-color: #EEEDE9;
+}
+
+
+.days_td_selected{
+	background-color: #f4948a!important;
+	color: #ffffff;
+}
+
+.calendar .days td .event{
+	color: #f4948a;
+}

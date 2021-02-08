@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Day from '../Day/Day';
+import style from './Weeks.module.css';
 
 function Weeks({ year, month }) {
   const [datesToStr] = useState({
@@ -19,7 +20,7 @@ function Weeks({ year, month }) {
   };
   return (
     <>
-    <tr>
+    <tr className={style.weekday_a}>
     {(date) && date.map((el, i) => {
       const prevDay = currentDay;
       const cdate = new Date(year, month, (prevDay + 1)).toDateString().slice(0, 3);
@@ -35,7 +36,7 @@ function Weeks({ year, month }) {
       return (<td>-</td>);
     })}
     </tr>
-    <tr>
+    <tr className={style.weekday_a}>
     {(date) && date.map((el, i) => {
       const prevDay = currentDay;
       const cdate = new Date(year, month, (prevDay + 1)).toDateString().slice(0, 3);
@@ -51,7 +52,7 @@ function Weeks({ year, month }) {
       return (<td>-</td>);
     })}
     </tr>
-    <tr>
+    <tr className={style.weekday_a}>
     {(date) && date.map((el, i) => {
       const prevDay = currentDay;
       const cdate = new Date(year, month, (prevDay + 1)).toDateString().slice(0, 3);
@@ -67,7 +68,7 @@ function Weeks({ year, month }) {
       return (<td>-</td>);
     })}
     </tr>
-    <tr>
+    <tr className={style.weekday_a}>
     {(date) && date.map((el, i) => {
       const prevDay = currentDay;
       const cdate = new Date(year, month, (prevDay + 1)).toDateString().slice(0, 3);
@@ -83,7 +84,7 @@ function Weeks({ year, month }) {
       return (<td>-</td>);
     })}
     </tr>
-    <tr>
+    <tr className={style.weekday_a}>
     {(date) && date.map((el, i) => {
       const prevDay = currentDay;
       const cdate = new Date(year, month, (prevDay + 1)).toDateString().slice(0, 3);

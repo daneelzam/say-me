@@ -1,0 +1,94 @@
+.calendar{
+	border-radius: 4px;
+	width: 1300px;
+	height: 550px;
+	background-color: #ffffff;
+	color: #333333;
+}
+
+.calendar_h1, .calendar_h2{
+	font-weight: 300;
+	font-size: 26px;
+	line-height: 28px;
+	text-transform: uppercase;
+	margin: 0px 0px 20px 0px;
+}
+
+.calendar_h1_span{
+	display: block;
+}
+
+.calendar_col{
+	position: relative;
+	float: left;
+	height: 100%;
+}
+
+.content{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ul{
+    margin: 0px;
+    list-style: none;
+}
+
+.leftCol{
+	width: 40%;
+	background-color: #f4948a;
+}
+
+.tip{
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 300;
+	font-size: 26px;
+    line-height: 28px;
+    text-align: center;
+    width: 100%;
+}
+
+.notes{
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.btn{
+    color: #eee;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.7em;
+    letter-spacing: 0.25em;
+    height: 5em;
+    line-height: 5em;
+    outline: 0;
+    background-color: rgb(244 148 137);
+    box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
+    border-radius: 0.35em;
+    border-color: #eeeeee03;
+    padding: 0 1.5em 0 1.5em;
+}
+
+.btn:hover{
+    color: #fff;
+}
+
+.rightCol{
+	width: 60%;
+}
+
+.rightCol_h2{
+	color: #C7BEBE;
+	text-align: right;
+	margin-bottom: 70px;
+}
+
+.month {
+    display: flex;
+    text-transform: uppercase;
+    justify-content: space-around;
+}
+

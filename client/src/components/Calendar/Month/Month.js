@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './Month.module.css';
 
 function Month({
   strMonth, date, active, setMonth
@@ -8,7 +9,12 @@ function Month({
   };
   return (
         <div>
-            <li><a onClick={setNewMonth} href="#" title={`${strMonth}`} data-value={`${date}`} className={active}>{`${strMonth}`}</a></li>
+            <li><a
+            onClick={setNewMonth}
+            href="#" title={`${strMonth}`}
+            data-value={`${date}`}
+            className={`${style.month_a} ${active}`}
+            >{`${strMonth}`}</a></li>
         </div>
   );
 }
