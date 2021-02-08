@@ -8,6 +8,7 @@ export const CLEAR_LOCAL_STORAGE = 'CLEAR_LOCAL_STORAGE';
 export const PERIOD_START = 'PERIOD_START';
 export const INNITIAL_USER = 'INNITIAL_USER';
 export const CHOOSE_DAY = 'CHOOSE_DAY';
+export const SET_MONTH = 'SET_MONTH';
 
 // account
 export const PARTNER_ADD = 'PARTNER_ADD';

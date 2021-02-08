@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setMonthAC } from '../../../redux/actionCreators/calendarAC';
 import style from './Month.module.css';
 
 function Month({
-  strMonth, date, active, setMonth
+  date, active
 }) {
+  const dispatch = useDispatch();
+  const [strMonth] = useState({
+    1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'
+  });
   const setNewMonth = () => {
-    setMonth(date - 1);
+    dispatch(setMonthAC(date - 1));
   };
   return (
         <div>
             <li><a
             onClick={setNewMonth}
             href="#" title={`${strMonth}`}
-            data-value={`${date}`}
             className={`${style.month_a} ${active}`}
-            >{`${strMonth}`}</a></li>
+            >{`${strMonth[date]}`}</a></li>
         </div>
   );
 }

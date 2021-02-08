@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Day from '../Day/Day';
 import style from './Weeks.module.css';
 
-function Weeks({ year, month }) {
+function Weeks() {
+  const year = useSelector((state) => state.calendar.year);
+  const month = useSelector((state) => state.calendar.month);
+
   const [datesToStr] = useState({
-    Sun: 7,
-    Sat: 6,
-    Fri: 5,
-    Thu: 4,
-    Wed: 3,
-    Tue: 2,
-    Mon: 1
+    Sun: 7, Sat: 6, Fri: 5, Thu: 4, Wed: 3, Tue: 2, Mon: 1
   });
   const [date] = useState(new Array(7).fill(1));
+
   let currentDay = 0;
   const nextStep = () => {
     currentDay += 1;
     return currentDay;
   };
+
   return (
     <>
     <tr className={style.weekday_a}>
