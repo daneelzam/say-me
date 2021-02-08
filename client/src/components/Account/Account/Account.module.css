@@ -1,0 +1,9 @@
+.main {
+    background: #ffffff;
+    border-radius: 4px;
+    max-width: 100%;
+    opacity: 0.95;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

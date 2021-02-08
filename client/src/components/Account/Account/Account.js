@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import './Account.css';
 import { useDispatch, useSelector } from 'react-redux';
+import style from './Account.module.css';
 
 import partnerAC from '../../../redux/actionCreators/partnerAC';
-
 
 function Account() {
   const user = useSelector((state) => state.auth.user);
@@ -16,7 +15,6 @@ function Account() {
 
   function handleAccount(event) {
     event.preventDefault();
-    console.log(partherPassword);
     fetch(`http://localhost:4000/api/main/${user.id}`, {
       method: 'POST',
       headers: {
@@ -26,14 +24,12 @@ function Account() {
       body: JSON.stringify({ email: partnerPassword })
     })
       .then((response) => (response.status === 200
-        ? dispatch(partherAC(partnerPassword))
+        ? dispatch(partnerAC(partnerPassword))
         : null));
-
   }
 
   return (
-  <section id="main" className="container">
-    <span className="avatar"><img src="images/avatar.jpg" alt="" /></span>
+  <section className={style.main}>
     <h1>Name: {user.name}</h1>
     <p>Email: {user.email}</p>
     <h1>Goal:</h1>
