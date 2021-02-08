@@ -1,3 +1,4 @@
 import { PARTHER_ADD } from '../types';
 
-export const partherAC = (email) => ({ type: PARTHER_ADD, payload: email });
+const partnerAC = (email) => ({ type: PARTHER_ADD, payload: email });
+export default partnerAC;
