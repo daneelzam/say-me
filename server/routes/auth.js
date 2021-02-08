@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import express from 'express';
 import bcrypt from 'bcrypt';
 import User from '../models/User.js';
@@ -19,7 +20,7 @@ router.route('/signup')
       });
       await user.save();
       req.session.user = user;
-      res.json({ user });
+      res.json({ user: { name: user.name, email: user.email, id: user._id } });
     } catch (error) {
       res.json(error.message);
     }
@@ -33,7 +34,8 @@ router.route('/login')
     const user = await User.findOne({ email });
     try {
       if (user && (await bcrypt.compare(password, user.password))) {
-        res.json({ user });
+        // eslint-disable-next-line no-underscore-dangle
+        res.json({ user: { name: user.name, email: user.email, id: user._id } });
       }
     } catch
     (error) {
@@ -46,7 +48,7 @@ router.route('/logout')
   .get(async (req, res) => {
     await req.session.destroy();
     res.clearCookie('auth');
-    res.end();
+    res.status(200).end();
   });
 
 export default router;
