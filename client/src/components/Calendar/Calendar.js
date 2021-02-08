@@ -53,14 +53,9 @@ function Calendar() {
                       </tr>
                       </thead>
                       <tbody className="days">
-                      {(weeks && year && month) && weeks.map((el) => (
-                        <Weeks
-                        numbWeek={el}
-                        key={el}
-                        month={month}
-                        year={year}
-                        />
-                      ))}
+                      {(weeks && year && (month || month + 1))
+                        && <Weeks month={month} year={year}/>
+                      }
                       </tbody>
                     </table>
                 </div>

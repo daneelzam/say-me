@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './Login.module.css';
-import { authErrorAC, authSuccessfullyAC } from '../../../redux/actionCreators/authAC';
+import { loginFetchAC, signUpFetchAc } from '../../../redux/actionCreators/authAC';
 
 function Login() {
   const [name, setName] = useState('');
@@ -34,42 +34,12 @@ function Login() {
 
   const loginHandler = async (event) => {
     event.preventDefault();
-
-    fetch('http://localhost:4000/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.user) {
-          dispatch(authSuccessfullyAC(result.user));
-        } else {
-          dispatch(authErrorAC('Wrong email or password!'));
-        }
-      });
+    dispatch(loginFetchAC({ email, password }));
   };
 
   const signUpHandler = async (event) => {
     event.preventDefault();
-
-    fetch('http://localhost:4000/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, password })
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.user) {
-          dispatch(authSuccessfullyAC(result.user));
-        } else {
-          dispatch(authErrorAC('Such user already exists'));
-        }
-      });
+    dispatch(signUpFetchAc({ name, email, password }));
   };
 
   return (
