@@ -1,5 +1,7 @@
 export const AUTH_SUCCESSFULLY = 'AUTH_SUCCESSFULLY';
 export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const CLEAR_LOCAL_STORAGE = 'CLEAR_LOCAL_STORAGE';
 
 export const PERIOD_START = 'PERIOD_START';
+export const INNITIAL_USER = 'INNITIAL_USER';
