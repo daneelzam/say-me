@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   partnerContact: String,
   periodStart: Date,
   ovulationDay: Date,
+  toGetPregnant: Boolean,
 });
 
 const User = mongoose.model('User', userSchema);

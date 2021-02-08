@@ -1,17 +1,40 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Account.module.css';
+import { partnerAC, pregnantAC } from '../../../redux/actionCreators/partnerAC';
 
-import partnerAC from '../../../redux/actionCreators/partnerAC';
 
 function Account() {
   const user = useSelector((state) => state.auth.user);
-  const [partnerPassword, setPartnerPassword] = useState();
+  const [partnerEmail, setPartnerEmail] = useState();
+  const [toGetPregnant, setToGetPregnant] = useState(true);
   const dispatch = useDispatch();
 
   function handlePartnerPassword(event) {
-    setPartnerPassword(event.target.value);
+    setPartnerEmail(event.target.value);
   }
+
+  const pregnancyHandler = (event) => {
+    if (event.target.value === 'get pregnant') {
+      setToGetPregnant(true);
+    } else {
+      setToGetPregnant(false);
+    }
+  };
+
+  const goalHandler = (event) => {
+    event.preventDefault();
+    fetch(`http://localhost:4000/api/main/goal/${user.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ toGetPregnant })
+    })
+      .then((response) => (response.status === 200
+        ? dispatch(pregnantAC(toGetPregnant))
+        : null));
+  };
 
   function handleAccount(event) {
     event.preventDefault();
@@ -20,29 +43,33 @@ function Account() {
       headers: {
         'Content-Type': 'application/json'
       },
-
-      body: JSON.stringify({ email: partnerPassword })
+      body: JSON.stringify({ email: partnerEmail })
     })
       .then((response) => (response.status === 200
-        ? dispatch(partnerAC(partnerPassword))
+        ? dispatch(partnerAC(partnerEmail))
         : null));
   }
 
   return (
-  <section className={style.main}>
-    <h1>Name: {user.name}</h1>
-    <p>Email: {user.email}</p>
-    <h1>Goal:</h1>
-   <form onSubmit={handleAccount}>
-     <select>
-       <option>get pregnant</option>
-       <option>don't get pregnant</option>
-     </select>
-     <h1>Email partner</h1>
-     <input type="text" placeholder="Email Partner" onChange={handlePartnerPassword} value={partnerPassword}/>
-     <button>Add</button>
-   </form>
-  </section>
+    <section id="main" className="container">
+        <span className="avatar"><img src="images/avatar.jpg" alt=""/></span>
+        <h1>Name: {user.name}</h1>
+        <p>Email: {user.email}</p>
+        <h1>Goal:</h1>
+        <form onSubmit={goalHandler}>
+            <select onChange={pregnancyHandler}>
+                <option>get pregnant</option>
+                <option>don't get pregnant</option>
+            </select>
+            <button>Confirm</button>
+        </form>
+
+        <form onSubmit={handleAccount}>
+            <h1>Email partner</h1>
+            <input type="text" placeholder="Email Partner" onChange={handlePartnerPassword} value={partnerEmail}/>
+            <button>Add</button>
+        </form>
+    </section>
   );
 }
 
