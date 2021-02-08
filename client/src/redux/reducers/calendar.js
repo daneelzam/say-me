@@ -1,13 +1,21 @@
-import { PERIOD_START, CLEAR_LOCAL_STORAGE } from '../types';
+import { PERIOD_START, CLEAR_LOCAL_STORAGE, CHOOSE_DAY } from '../types';
 
 const windowState = JSON.parse(window.localStorage.getItem('state'));
 
 let preloadState = {};
 
 if (windowState && windowState.calendar) {
-  preloadState = { periodStart: windowState.calendar.periodStart };
+  preloadState = {
+    periodStart: windowState.calendar.periodStart,
+    chooseDay: windowState.calendar.chooseDay
+  };
 } else {
-  preloadState = { periodStart: [] };
+  preloadState = {
+    periodStart: [],
+    chooseDay: new Date().toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    })
+  };
 }
 
 const calendarReducer = (state = preloadState, action) => {
@@ -20,6 +28,9 @@ const calendarReducer = (state = preloadState, action) => {
         ...state,
         periodStart: []
       };
+
+    case CHOOSE_DAY:
+      return { ...state, chooseDay: action.payload };
     default:
       return state;
   }

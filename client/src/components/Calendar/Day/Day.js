@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import style from './Day.module.css';
+import { chooseDayAC } from '../../../redux/actionCreators/calendarAC';
 
 function Day({ year, month, date }) {
+  const dispatch = useDispatch();
   const [currentDate] = useState(new Date(year, month, date));
   const setActive = (e) => {
     e.target.classList.contains(`${style.days_td_selected}`) ? e.target.classList.remove(`${style.days_td_selected}`) : e.target.classList.add(`${style.days_td_selected}`);
+    dispatch(chooseDayAC(currentDate.toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    })));
   };
   return (
         <>
