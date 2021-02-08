@@ -1,8 +1,8 @@
-import { PARTHER_ADD } from '../types';
+import { PARTNER_ADD } from '../types';
 
 const partnerReducer = (state = {}, action) => {
   switch (action.type) {
-    case PARTHER_ADD:
+    case PARTNER_ADD:
       return { ...state, partnerContact: action.payload };
 
     default:
