@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Switch, Route
+  BrowserRouter as Router, Switch, Route, Redirect
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Login from './components/Account/Login/Login';
@@ -21,7 +21,7 @@ function App() {
         <div>
           {isAuth && <Header/>}
           <Switch>
-            <Route path="/login"><Login/></Route>
+            <Route path="/login">{isAuth ? <Redirect to='/' /> : <Login/>}</Route>
             <ProtectedRouter Component={Account} path="/account"/>
             <ProtectedRouter Component={Calendar} path="/" />
             <ProtectedRouter Component={Logout} path="auth/logout"/>
