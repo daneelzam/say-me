@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import './Calendar.css';
+import { useSelector } from 'react-redux';
 import style from './Calendar.module.css';
 import Month from './Month/Month';
 import Weeks from './Weeks/Weeks';
 
 function Calendar() {
+  const activeDate = useSelector((state) => state.calendar.chooseDay);
+  const activeDay = `${activeDate.split(' ')[1]} ${activeDate.split(' ')[2]}`;
+  const activeWeekDay = activeDate.split(' ')[0];
+
   const [date] = useState(new Date());
   const [year] = useState(date.getFullYear());
   const [month, setMonth] = useState(date.getMonth());
@@ -29,7 +34,7 @@ function Calendar() {
         <div className={`${style.calendar} container`}>
           <div className={`${style.calendar_col} ${style.leftCol}`}>
           <div className={`${style.content}`}>
-            <h1 className={`${style.calendar_h1} date`}>Friday<span className={style.calendar_h1_span}>September 12th</span></h1>
+            <h1 className={`${style.calendar_h1} date`}>{activeDay}<span className={style.calendar_h1_span}>{activeWeekDay}</span></h1>
             <div className={style.notes}>
               <p>Information about active date</p>
             </div>
