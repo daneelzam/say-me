@@ -7,6 +7,6 @@ const app = express();
 
 config(app);
 app.use('/auth', authRouter);
-app.use('/', mainRouter);
+app.use('/api/main', mainRouter);
 
 export default app;
