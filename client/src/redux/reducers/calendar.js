@@ -1,5 +1,5 @@
 import {
-  PERIOD_START, CLEAR_LOCAL_STORAGE, CHOOSE_DAY, SET_MONTH
+  PERIOD_START, CLEAR_LOCAL_STORAGE, CHOOSE_DAY, SET_MONTH, CHANGE_TYPE_DAY
 } from '../types';
 
 const windowState = JSON.parse(window.localStorage.getItem('state'));
@@ -11,7 +11,8 @@ if (windowState && windowState.calendar) {
     periodStart: windowState.calendar.periodStart,
     chooseDay: windowState.calendar.chooseDay,
     year: windowState.calendar.year,
-    month: windowState.calendar.month
+    month: windowState.calendar.month,
+    typeOfChosenDay: windowState.calendar.typeOfChosenDay
   };
 } else {
   preloadState = {
@@ -20,7 +21,8 @@ if (windowState && windowState.calendar) {
       weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
     }),
     year: new Date().getFullYear(),
-    month: new Date().getMonth()
+    month: new Date().getMonth(),
+    typeOfChosenDay: 'clear'
   };
 }
 
@@ -39,6 +41,8 @@ const calendarReducer = (state = preloadState, action) => {
       return { ...state, month: action.payload };
     case CHOOSE_DAY:
       return { ...state, chooseDay: action.payload };
+    case CHANGE_TYPE_DAY:
+      return { ...state, typeOfChosenDay: action.payload };
     default:
       return state;
   }

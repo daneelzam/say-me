@@ -76,6 +76,23 @@
     color: #fff;
 }
 
+.btnDis{
+    color: #eee;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.7em;
+    letter-spacing: 0.25em;
+    height: 5em;
+    line-height: 5em;
+    outline: 0;
+    background-color: rgb(244 148 137);
+    box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
+    border-radius: 0.35em;
+    border-color: #eeeeee03;
+    padding: 0 1.5em 0 1.5em;
+}
+
 .rightCol{
 	width: 60%;
 }
