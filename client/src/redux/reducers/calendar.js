@@ -32,7 +32,8 @@ const calendarReducer = (state = preloadState, action) => {
       window.localStorage.removeItem('state');
       return {
         ...state,
-        periodStart: []
+        periodStart: [],
+        chooseDay: ''
       };
     case SET_MONTH:
       return { ...state, month: action.payload };

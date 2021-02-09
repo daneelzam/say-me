@@ -8,6 +8,10 @@
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 0.7em;
+	letter-spacing: 0.25em;
 	height: 100vh;
 	margin: -20px 0 50px;
 }
@@ -32,17 +36,21 @@
 	margin: 15px 0;
 }
 
-.button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
+.button { color: #eee;
+	color: rgba(255, 255, 255, 0.75);
 	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+	text-decoration: none;
+	font-size: 0.7em;
+	letter-spacing: 0.25em;
+	height: 5em;
+	line-height: 5em;
+	outline: 0;
+	background-color: rgb(244 148 137);
+	box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
+	border-radius: 0.35em;
+	border-color: #eeeeee03;
+	padding: 0 1.5em 0 1.5em;
+	margin-top: 1.5em;
 }
 
 .button:active {
@@ -148,9 +156,9 @@
 }
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background:rgb(244 148 137);
+	background: -webkit-linear-gradient(to right, rgb(244 148 137), #FF416C);
+	background: linear-gradient(to right, rgb(244 148 137), #FF416C);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
