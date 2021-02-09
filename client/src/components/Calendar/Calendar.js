@@ -30,7 +30,8 @@ function Calendar() {
     });
     if (exits <= 0) {
       const periodWeek = [];
-      const day = new Date(activeDay);
+      const day = new Date(activeDate);
+      console.log(day);
       const dayOfMonth = day.getDate();
       for (let i = 1; i <= 4; i += 1) {
         day.setDate(dayOfMonth + i);
