@@ -15,3 +15,16 @@ export const setMonthAC = (currentMonth) => ({ type: SET_MONTH, payload: current
 export const periodStartAC = (period) => ({ type: PERIOD_START, payload: period });
 export const ovulationAC = () => ({ type: OVULATION });
 export const typeOfChosenDayAC = (typeOfDay) => ({ type: CHANGE_TYPE_DAY, payload: typeOfDay });
+
+export const periodDaysFetchAC = (periodWeek, id) => (dispatch) => {
+  fetch(`${process.env.REACT_APP_URL}/main`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ periodWeek, id })
+
+  }).then((response) => {
+    response.status === 200 ? dispatch(periodStartAC(periodWeek)) : null;
+  });
+};

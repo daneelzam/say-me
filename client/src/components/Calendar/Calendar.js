@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './Calendar.module.css';
 import Month from './Month/Month';
 import Weeks from './Weeks/Weeks';
-import { periodStartAC } from '../../redux/actionCreators/calendarAC';
+import { periodDaysFetchAC } from '../../redux/actionCreators/calendarAC';
 
 function Calendar() {
+  const user = useSelector((state) => state.auth.user);
+  const { id } = user;
+  // console.log(user.id);
   const dispatch = useDispatch();
   const periodDays = useSelector((state) => state.calendar.periodStart);
   const typeOfDay = useSelector((state) => state.calendar.typeOfChosenDay);
@@ -36,7 +39,7 @@ function Calendar() {
         day.setDate(dayOfMonth + i);
         periodWeek.push(day.toLocaleDateString('en-US', options));
       }
-      dispatch(periodStartAC(periodWeek));
+      dispatch(periodDaysFetchAC(periodWeek, id));
     }
   };
 
