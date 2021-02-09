@@ -12,7 +12,7 @@ if (windowState && windowState.calendar) {
     chooseDay: windowState.calendar.chooseDay,
     year: windowState.calendar.year,
     month: windowState.calendar.month,
-    ovulation: windowState.calendar.ovulation
+    ovulation: windowState.calendar.ovulation,
     typeOfChosenDay: windowState.calendar.typeOfChosenDay
   };
 } else {
@@ -23,7 +23,7 @@ if (windowState && windowState.calendar) {
     }),
     year: new Date().getFullYear(),
     month: new Date().getMonth(),
-    ovulation: []
+    ovulation: [],
     typeOfChosenDay: 'clear'
   };
 }
@@ -31,7 +31,9 @@ if (windowState && windowState.calendar) {
 const calendarReducer = (state = preloadState, action) => {
   switch (action.type) {
     case PERIOD_START:
-      return { ...state, periodStart: [...state.periodStart, [state.chooseDay, ...action.payload]] };
+      return {
+        ...state, periodStart: [...state.periodStart, [state.chooseDay, ...action.payload]]
+      };
     case OVULATION:
       return { ...state, ovulation: [...state.ovulation] };
     case CLEAR_LOCAL_STORAGE:

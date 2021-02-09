@@ -6,11 +6,9 @@ import Weeks from './Weeks/Weeks';
 import { periodStartAC } from '../../redux/actionCreators/calendarAC';
 
 function Calendar() {
+  const dispatch = useDispatch();
   const periodDays = useSelector((state) => state.calendar.periodStart);
   const typeOfDay = useSelector((state) => state.calendar.typeOfChosenDay);
-  const dispatch = useDispatch();
-
-  const periodDays = useSelector((state) => state.calendar.periodStart);
   const activeDate = useSelector((state) => state.calendar.chooseDay);
   const year = useSelector((state) => state.calendar.year);
   const month = useSelector((state) => state.calendar.month);
