@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Day.module.css';
 import { chooseDayAC } from '../../../redux/actionCreators/calendarAC';
 
 function Day({ year, month, date }) {
+  const periodDays = useSelector((state) => state.calendar.periodStart);
+  const chooseDay = useSelector((state) => state.calendar.chooseDay);
   const dispatch = useDispatch();
   const chooseday = useSelector((state) => state.calendar.chooseDay);
   const [options] = useState({
@@ -18,10 +21,16 @@ function Day({ year, month, date }) {
       dayRef.current.classList.remove(`${style.days_td_selected}`);
     }
   }, [chooseday]);
-
   const setActive = () => {
     dispatch(chooseDayAC(currentDate.toLocaleDateString('en-US', options)));
   };
+
+  // useEffect(() => {
+  //   if (periodDays.includes(chooseDay)) {
+  //
+  //   }
+  // }, [periodDays]);
+
   return (
         <>
             {currentDate && <td className={style.days_td}

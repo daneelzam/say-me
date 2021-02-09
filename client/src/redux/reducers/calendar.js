@@ -27,7 +27,7 @@ if (windowState && windowState.calendar) {
 const calendarReducer = (state = preloadState, action) => {
   switch (action.type) {
     case PERIOD_START:
-      return { ...state };
+      return { ...state, periodStart: [...state.periodStart, state.chooseDay] };
     case CLEAR_LOCAL_STORAGE:
       window.localStorage.removeItem('state');
       return {
