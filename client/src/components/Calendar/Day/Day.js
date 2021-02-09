@@ -5,34 +5,37 @@ import { chooseDayAC } from '../../../redux/actionCreators/calendarAC';
 
 function Day({ year, month, date }) {
   const periodDays = useSelector((state) => state.calendar.periodStart);
-  const chooseDay = useSelector((state) => state.calendar.chooseDay);
   const dispatch = useDispatch();
+  const chooseday = useSelector((state) => state.calendar.chooseDay);
   const [options] = useState({
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
   });
-
   const [currentDate] = useState(new Date(year, month, date));
   const dayRef = useRef();
 
   useEffect(() => {
-    if (currentDate.toLocaleDateString('en-US', options) === chooseDay) {
+    if (currentDate.toLocaleDateString('en-US', options) === chooseday) {
       dayRef.current.classList.add(`${style.days_td_selected}`);
     } else {
       dayRef.current.classList.remove(`${style.days_td_selected}`);
     }
-  }, [chooseDay]);
-
-  useEffect(() => {
-    if (periodDays.includes(currentDate.toLocaleDateString('en-US', options))) {
-      dayRef.current.classList.add(`${style.day_td_period}`);
-    } else {
-      dayRef.current.classList.remove(`${style.day_td_period}`);
-    }
-  });
+  }, [chooseday]);
 
   const setActive = () => {
     dispatch(chooseDayAC(currentDate.toLocaleDateString('en-US', options)));
   };
+
+  useEffect(() => {
+    let exist = 0;
+    periodDays.forEach((period) => {
+      if (period.includes(currentDate.toLocaleDateString('en-US', options))) {
+        exist += 1;
+      }
+    });
+    exist > 0
+      ? dayRef.current.classList.add(`${style.day_td_period}`)
+      : dayRef.current.classList.remove(`${style.day_td_period}`);
+  }, [periodDays]);
 
   return (
         <>

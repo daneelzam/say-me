@@ -17,7 +17,13 @@ function Calendar() {
   const [months] = useState(new Array(12).fill('1'));
 
   const startPeriod = () => {
-    periodDays.includes(activeDate) ? null : dispatch(periodStartAC());
+    let exits = 0;
+    periodDays.forEach((period) => {
+      if (period.includes(activeDate)) {
+        exits += 1;
+      }
+    });
+    exits > 0 ? null : dispatch(periodStartAC());
   };
 
   return (
