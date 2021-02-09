@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Calendar.module.css';
 import Month from './Month/Month';
 import Weeks from './Weeks/Weeks';
+import { periodStartAC } from '../../redux/actionCreators/calendarAC';
 
 function Calendar() {
+  const periodDays = useSelector((state) => state.calendar.periodStart);
+  const dispatch = useDispatch();
   const activeDate = useSelector((state) => state.calendar.chooseDay);
   const activeDay = `${activeDate.split(' ')[1]} ${activeDate.split(' ')[2]}`;
   const activeWeekDay = activeDate.split(' ')[0];
@@ -12,6 +15,10 @@ function Calendar() {
   const month = useSelector((state) => state.calendar.month);
 
   const [months] = useState(new Array(12).fill('1'));
+
+  const startPeriod = () => {
+    periodDays.includes(activeDate) ? null : dispatch(periodStartAC());
+  };
 
   return (
     <section>
@@ -22,7 +29,10 @@ function Calendar() {
             <div className={style.notes}>
               <p>Information about active date</p>
             </div>
-            <button className={style.btn}>Select as start date of cycle</button>
+            <button
+                onClick={startPeriod}
+                className={style.btn}
+            >Select as start date of cycle</button>
               <p className={`${style.tip}`}>"Tip of the day"</p>
           </div>
         </div>

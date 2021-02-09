@@ -20,3 +20,7 @@
 .calendar .days td .event{
 	color: #f4948a;
 }
+
+.day_td_period{
+	background-color: #b21f2d;
+}
