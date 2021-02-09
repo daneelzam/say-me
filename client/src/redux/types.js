@@ -2,6 +2,7 @@
 export const AUTH_SUCCESSFULLY = 'AUTH_SUCCESSFULLY';
 export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const CHANGE_CONTACT = 'CHANGE_CONTACT';
 
 // calendar
 export const CLEAR_LOCAL_STORAGE = 'CLEAR_LOCAL_STORAGE';

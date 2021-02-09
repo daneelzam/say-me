@@ -6,7 +6,7 @@ import { partnerFetchAC, getPregnantFetchAC } from '../../../redux/actionCreator
 function Account() {
   const user = useSelector((state) => state.auth.user);
   const pregnant = useSelector((state) => state.partner.toGetPregnant);
-  const contact = useSelector((state) => state.partner.partnerContact);
+  // const contact = useSelector((state) => state.partner.partnerContact);
 
   const [partnerEmail, setPartnerEmail] = useState();
   const [toGetPregnant, setToGetPregnant] = useState(true);
@@ -37,6 +37,7 @@ function Account() {
   }
 
   return (
+
     <section className={style.main}>
         <span><img src="images/avatar.jpg" alt=""/></span>
         <h1>Name: {user.name}</h1>
@@ -50,11 +51,13 @@ function Account() {
                         <option value={true}>get pregnant</option>
                         <option value={false}>don't get pregnant</option>
                     </select>
-                    <button>Change</button>
+                    <button className={style.btn}><i className="fas fa-pencil-alt"/></button>
                 </form>
             </>)
-          : <h1>Goal:{pregnant ? <p>get pregnant</p> : <p>don't get pregnant</p>}
-                <button onClick={() => setChangeGoal(!changeGoal)}>Change</button>
+        // eslint-disable-next-line max-len
+          : <h1 className={style.lines}>Goal:{pregnant ? <p>get pregnant</p> : <p>don't get pregnant</p>}
+                <button className={style.btn}
+                        onClick={() => setChangeGoal(!changeGoal)}><i className="fas fa-pencil-alt"/></button>
             </h1>
         }
 
@@ -63,15 +66,17 @@ function Account() {
             <form onSubmit={handleAccount}>
               <h1>Email partner:</h1>
               <input type="text" placeholder="Email Partner" onChange={handlePartnerPassword} value={partnerEmail}/>
-              <button>Add</button>
+              <button className={style.btn}>Add</button>
             </form>
           </>)
         : (<>
-            <h1>Email partner: {contact}</h1>
-            <button onClick={() => setChangeEmail(!changeEmail)}>Change</button>
+            <h1>Email partner: {user.partnerContact}</h1>
+            <button className={style.btn}
+                    onClick={() => setChangeEmail(!changeEmail)}><i className="fas fa-pencil-alt"/></button>
           </>)
       }
     </section>
+
   );
 }
 
