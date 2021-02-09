@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   partnerContact: String,
   periodStart: Date,
+  periodDays: [String],
   ovulationDay: Date,
   toGetPregnant: Boolean,
 });
