@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from 'react';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Day.module.css';
@@ -7,14 +8,21 @@ function Day({ year, month, date }) {
   const periodDays = useSelector((state) => state.calendar.periodStart);
   const chooseDay = useSelector((state) => state.calendar.chooseDay);
   const dispatch = useDispatch();
+  const chooseday = useSelector((state) => state.calendar.chooseDay);
+  const [options] = useState({
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
   const [currentDate] = useState(new Date(year, month, date));
-  const setActive = (e) => {
-    e.target.classList.contains(`${style.days_td_selected}`)
-      ? e.target.classList.remove(`${style.days_td_selected}`)
-      : e.target.classList.add(`${style.days_td_selected}`);
-    dispatch(chooseDayAC(currentDate.toLocaleDateString('en-US', {
-      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-    })));
+  const dayRef = useRef();
+  useEffect(() => {
+    if (currentDate.toLocaleDateString('en-US', options) === chooseday) {
+      dayRef.current.classList.add(`${style.days_td_selected}`);
+    } else {
+      dayRef.current.classList.remove(`${style.days_td_selected}`);
+    }
+  }, [chooseday]);
+  const setActive = () => {
+    dispatch(chooseDayAC(currentDate.toLocaleDateString('en-US', options)));
   };
 
   // useEffect(() => {
@@ -26,6 +34,7 @@ function Day({ year, month, date }) {
   return (
         <>
             {currentDate && <td className={style.days_td}
+            ref={dayRef}
             onClick={setActive}
             title={date}
             data-value={date}>{currentDate.getDate()}</td>}
