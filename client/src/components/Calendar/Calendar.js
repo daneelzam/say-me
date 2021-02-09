@@ -6,15 +6,20 @@ import Weeks from './Weeks/Weeks';
 import { periodStartAC } from '../../redux/actionCreators/calendarAC';
 
 function Calendar() {
-  const periodDays = useSelector((state) => state.calendar.periodStart);
   const dispatch = useDispatch();
+
+  const periodDays = useSelector((state) => state.calendar.periodStart);
   const activeDate = useSelector((state) => state.calendar.chooseDay);
-  const activeDay = `${activeDate.split(' ')[1]} ${activeDate.split(' ')[2]}`;
-  const activeWeekDay = activeDate.split(' ')[0];
   const year = useSelector((state) => state.calendar.year);
   const month = useSelector((state) => state.calendar.month);
 
+  const activeDay = `${activeDate.split(' ')[1]} ${activeDate.split(' ')[2]}`;
+  const activeWeekDay = activeDate.split(' ')[0];
+
   const [months] = useState(new Array(12).fill('1'));
+  const [options] = useState({
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
 
   const startPeriod = () => {
     let exits = 0;
@@ -23,11 +28,20 @@ function Calendar() {
         exits += 1;
       }
     });
-    exits > 0 ? null : dispatch(periodStartAC());
+    if (exits <= 0) {
+      const periodWeek = [];
+      const day = new Date(activeDay);
+      const dayOfMonth = day.getDate();
+      for (let i = 1; i <= 4; i += 1) {
+        day.setDate(dayOfMonth + i);
+        periodWeek.push(day.toLocaleDateString('en-US', options));
+      }
+      dispatch(periodStartAC(periodWeek));
+    }
   };
 
   return (
-    <section>
+      <section>
         <div className={`${style.calendar} container`}>
           <div className={`${style.calendar_col} ${style.leftCol}`}>
           <div className={`${style.content}`}>
