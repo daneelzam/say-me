@@ -40,32 +40,36 @@ function Account() {
 
     <section className={style.main}>
         <span><img src="images/avatar.jpg" alt=""/></span>
-        <h1 className={style.solid}>Name: {user.name}</h1>
-        <h1 className={style.solid}>Email: {user.email}</h1>
+        <div className={style.box}>
+          <span className={style.solid}>Name: </span><span className={style.p}>{user.name}</span>
+        </div>
+        <div className={style.box}>
+          <span className={style.solid}>Email: </span><span className={style.p}>{user.email}</span>
+        </div>
 
         {changeGoal
-          ? (<>
-              <h1 className={style.solid}>Goal:</h1>
+          ? (<div className={style.box}>
+               <span className={style.solid}>Goal:</span>
                 <form onSubmit={goalHandler}>
                     <select required onChange={pregnancyHandler} value={toGetPregnant}>
-                        <option value={true}>get pregnant</option>
-                        <option value={false}>don't get pregnant</option>
+                        <option className={style.p} value={true}>get pregnant</option>
+                        <option className={style.p} value={false}>don't get pregnant</option>
                     </select>
                     <button className={style.btn}><i className="fas fa-pencil-alt"/></button>
                 </form>
-            </>)
+            </div>)
         // eslint-disable-next-line max-len
-          : <h1 className={`${style.lines} ${style.solid}`}>Goal:{pregnant ? <p className={style.solidp}>get pregnant</p> : <p className={style.solidp}>don't get pregnant</p>}
+          : < div className={style.box}> <span className={`${style.lines} ${style.solid}`}>Goal: </span> {pregnant ? <span className={style.p}>get pregnan</span> : <span className={style.p}>don't get pregnant</span>}
                 <button className={style.btn}
                         onClick={() => setChangeGoal(!changeGoal)}><i className="fas fa-pencil-alt"/></button>
-            </h1>
+            </div>
         }
 
       {changeEmail
         ? (<>
             <form onSubmit={handleAccount}>
               <h1 className={style.solid}>Email partner:</h1>
-              <input type="text" placeholder="Email Partner" onChange={handlePartnerPassword} value={partnerEmail}/>
+              <input className={style.p} type="text" placeholder="Email Partner" onChange={handlePartnerPassword} value={partnerEmail}/>
               <button className={style.btn}>Add</button>
             </form>
           </>)
