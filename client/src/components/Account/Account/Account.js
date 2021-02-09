@@ -40,12 +40,12 @@ function Account() {
 
     <section className={style.main}>
         <span><img src="images/avatar.jpg" alt=""/></span>
-        <h1>Name: {user.name}</h1>
-        <p>Email: {user.email}</p>
+        <h1 className={style.solid}>Name: {user.name}</h1>
+        <h1 className={style.solid}>Email: {user.email}</h1>
 
         {changeGoal
           ? (<>
-              <h1>Goal:</h1>
+              <h1 className={style.solid}>Goal:</h1>
                 <form onSubmit={goalHandler}>
                     <select required onChange={pregnancyHandler} value={toGetPregnant}>
                         <option value={true}>get pregnant</option>
@@ -55,7 +55,7 @@ function Account() {
                 </form>
             </>)
         // eslint-disable-next-line max-len
-          : <h1 className={style.lines}>Goal:{pregnant ? <p>get pregnant</p> : <p>don't get pregnant</p>}
+          : <h1 className={`${style.lines} ${style.solid}`}>Goal:{pregnant ? <p className={style.solidp}>get pregnant</p> : <p className={style.solidp}>don't get pregnant</p>}
                 <button className={style.btn}
                         onClick={() => setChangeGoal(!changeGoal)}><i className="fas fa-pencil-alt"/></button>
             </h1>
@@ -64,15 +64,16 @@ function Account() {
       {changeEmail
         ? (<>
             <form onSubmit={handleAccount}>
-              <h1>Email partner:</h1>
+              <h1 className={style.solid}>Email partner:</h1>
               <input type="text" placeholder="Email Partner" onChange={handlePartnerPassword} value={partnerEmail}/>
               <button className={style.btn}>Add</button>
             </form>
           </>)
         : (<>
-            <h1>Email partner: {user.partnerContact}</h1>
+            <h1 className={style.solid}>Email partner: {user.partnerContact}
             <button className={style.btn}
                     onClick={() => setChangeEmail(!changeEmail)}><i className="fas fa-pencil-alt"/></button>
+            </h1>
           </>)
       }
     </section>
