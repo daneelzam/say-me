@@ -8,16 +8,15 @@ import { periodDaysFetchAC } from '../../redux/actionCreators/calendarAC';
 function Calendar() {
   const user = useSelector((state) => state.auth.user);
   const { id } = user;
-  // console.log(user.id);
   const dispatch = useDispatch();
-  const periodDays = useSelector((state) => state.calendar.periodStart);
-  const typeOfDay = useSelector((state) => state.calendar.typeOfChosenDay);
-  const activeDate = useSelector((state) => state.calendar.chooseDay);
+  const periodStart = useSelector((state) => state.calendar.periodStart);
+  const typeOfChosenDay = useSelector((state) => state.calendar.typeOfChosenDay);
+  const chooseDay = useSelector((state) => state.calendar.chooseDay);
   const year = useSelector((state) => state.calendar.year);
   const month = useSelector((state) => state.calendar.month);
 
-  const activeDay = `${activeDate.split(' ')[1]} ${activeDate.split(' ')[2]}`;
-  const activeWeekDay = activeDate.split(' ')[0];
+  const activeDay = `${chooseDay.split(' ')[1]} ${chooseDay.split(' ')[2]}`;
+  const activeWeekDay = chooseDay.split(' ')[0].slice(0, -1);
 
   const [months] = useState(new Array(12).fill('1'));
   const [options] = useState({
@@ -26,15 +25,14 @@ function Calendar() {
 
   const startPeriod = () => {
     let exits = 0;
-    periodDays.forEach((period) => {
-      if (period.includes(activeDate)) {
+    periodStart.forEach((period) => {
+      if (period.includes(chooseDay)) {
         exits += 1;
       }
     });
     if (exits <= 0) {
       const periodWeek = [];
-      const day = new Date(activeDate);
-      console.log(day);
+      const day = new Date(chooseDay);
       const dayOfMonth = day.getDate();
       for (let i = 1; i <= 4; i += 1) {
         day.setDate(dayOfMonth + i);
@@ -45,22 +43,21 @@ function Calendar() {
   };
 
   return (
-      <section>
-        <div className={`${style.calendar} container`}>
+      <section className={style.container}>
+        <div className={`${style.calendar}`}>
           <div className={`${style.calendar_col} ${style.leftCol}`}>
           <div className={`${style.content}`}>
             <h1 className={`${style.calendar_h1} date`}>{activeDay}<span className={style.calendar_h1_span}>{activeWeekDay}</span></h1>
             <div className={style.notes}>
               <p>Information about active date</p>
             </div>
-              { typeOfDay === 'clear'
+              { typeOfChosenDay === 'clear'
                 ? <button onClick = {startPeriod}
                           className={style.btn}>Select as start date of cycle</button>
                 : <button disabled={true} onClick = {startPeriod}
                           className={style.btnDis}>Select as start date of cycle</button>
 
               }
-
               <p className={`${style.tip}`}>"Tip of the day"</p>
           </div>
         </div>

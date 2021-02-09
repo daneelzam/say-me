@@ -4,7 +4,8 @@
 	font-size: 12px;
 	font-weight: bold;
 	border-radius: 12px;
-    color: #747978;
+	color: #747978;
+	cursor: pointer
 }
 
 .days_td:hover{
@@ -22,5 +23,6 @@
 }
 
 .day_td_period{
-	color: #b21f2d;
+	box-sizing: border-box;
+	border: 1px solid #f4948a;
 }

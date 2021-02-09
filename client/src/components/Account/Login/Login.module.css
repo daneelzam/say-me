@@ -36,21 +36,21 @@
 	margin: 15px 0;
 }
 
-.button { color: #eee;
-	color: rgba(255, 255, 255, 0.75);
-	text-transform: uppercase;
-	text-decoration: none;
-	font-size: 0.7em;
-	letter-spacing: 0.25em;
-	height: 5em;
-	line-height: 5em;
-	outline: 0;
-	background-color: rgb(244 148 137);
-	box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
-	border-radius: 0.35em;
-	border-color: #eeeeee03;
-	padding: 0 1.5em 0 1.5em;
-	margin-top: 1.5em;
+.btn { 
+	color: #eee;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.7em;
+    letter-spacing: 0.25em;
+    height: 5em;
+    line-height: 5em;
+    outline: 0;
+    background-color: rgb(244 148 137);
+    border-radius: 0.35em;
+    border-color: #eeeeee03;
+    padding: 0 1.5em 0 1.5em;
 }
 
 .button:active {
@@ -63,7 +63,9 @@
 
 .button_ghost {
 	background-color: transparent;
-	border-color: #FFFFFF;
+    border-radius: 0.35em;
+	border-color: #ffffff00;
+	box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
 }
 
 .form {
@@ -157,8 +159,8 @@
 
 .overlay {
 	background:rgb(244 148 137);
-	background: -webkit-linear-gradient(to right, rgb(244 148 137), #FF416C);
-	background: linear-gradient(to right, rgb(244 148 137), #FF416C);
+	background: -webkit-linear-gradient(to right, rgb(244 148 137), rgb(244 148 137));
+	background: linear-gradient(to right, rgb(244 148 137), rgb(244 148 137));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

@@ -15,11 +15,21 @@ function Month({
   };
   return (
         <div>
-            <li><a
+            {active
+              ? (<li
             onClick={setNewMonth}
             href="#" title={`${strMonth}`}
-            className={`${style.month_a} ${active}`}
-            >{`${strMonth[date]}`}</a></li>
+            className={`${style.month_a} ${style.month_a_active}`}
+            >
+            {`${strMonth[date]}`}</li>)
+              : (<li
+            onClick={setNewMonth}
+            href="#" title={`${strMonth}`}
+            className={`${style.month_a} `}
+            >
+            {`${strMonth[date]}`}</li>)
+            }
+
         </div>
   );
 }
