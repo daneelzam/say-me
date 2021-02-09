@@ -1,4 +1,5 @@
 import { PARTNER_ADD, GOAL_ADD, PARTNER_ERR } from '../types';
+import { changeContactAC } from './authAC';
 
 export const partnerAC = (email) => ({ type: PARTNER_ADD, payload: email });
 export const pregnantAC = (toGetPregnant) => ({ type: GOAL_ADD, payload: toGetPregnant });
@@ -15,7 +16,7 @@ export const partnerFetchAC = (partnerEmail, id) => (dispatch) => {
     body: JSON.stringify({ email: partnerEmail })
   })
     .then((response) => (response.status === 200
-      ? dispatch(partnerAC(partnerEmail))
+      ? dispatch(changeContactAC(partnerEmail))
       : dispatch(errorAC('Something goes wrong!'))));
 };
 
