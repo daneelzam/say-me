@@ -11,6 +11,7 @@ export const INNITIAL_USER = 'INNITIAL_USER';
 export const CHOOSE_DAY = 'CHOOSE_DAY';
 export const SET_MONTH = 'SET_MONTH';
 export const OVULATION = 'OVULATION';
+export const CHANGE_TYPE_DAY = 'CHANGE_TYPE_DAY';
 
 // account
 export const PARTNER_ADD = 'PARTNER_ADD';

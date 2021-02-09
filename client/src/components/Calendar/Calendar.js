@@ -6,6 +6,8 @@ import Weeks from './Weeks/Weeks';
 import { periodStartAC } from '../../redux/actionCreators/calendarAC';
 
 function Calendar() {
+  const periodDays = useSelector((state) => state.calendar.periodStart);
+  const typeOfDay = useSelector((state) => state.calendar.typeOfChosenDay);
   const dispatch = useDispatch();
 
   const periodDays = useSelector((state) => state.calendar.periodStart);
@@ -49,10 +51,14 @@ function Calendar() {
             <div className={style.notes}>
               <p>Information about active date</p>
             </div>
-            <button
-                onClick={startPeriod}
-                className={style.btn}
-            >Select as start date of cycle</button>
+              { typeOfDay === 'clear'
+                ? <button onClick = {startPeriod}
+                          className={style.btn}>Select as start date of cycle</button>
+                : <button disabled={true} onClick = {startPeriod}
+                          className={style.btnDis}>Select as start date of cycle</button>
+
+              }
+
               <p className={`${style.tip}`}>"Tip of the day"</p>
           </div>
         </div>
