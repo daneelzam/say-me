@@ -4,17 +4,16 @@ const windowState = JSON.parse(window.localStorage.getItem('state'));
 
 let preloadState = {};
 
-if (windowState && windowState.partner) {
+if (windowState && windowState.account) {
   preloadState = {
-    toGetPregnant: windowState.partner.toGetPregnant,
-    partnerContact: windowState.partner.partnerContact,
+    toGetPregnant: windowState.account.toGetPregnant,
     err: null
   };
 } else {
-  preloadState = { toGetPregnant: true, partnerContact: '', err: null };
+  preloadState = { toGetPregnant: true, err: null };
 }
 
-const partnerReducer = (state = preloadState, action) => {
+const accountReducer = (state = preloadState, action) => {
   switch (action.type) {
     case PARTNER_ADD:
       return { ...state, partnerContact: action.payload };
@@ -27,4 +26,4 @@ const partnerReducer = (state = preloadState, action) => {
   }
 };
 
-export default partnerReducer;
+export default accountReducer;

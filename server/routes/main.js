@@ -14,8 +14,6 @@ router.route('/')
   .post(async (req, res) => {
     const { id, periodStart, periodWeek } = req.body;
 
-    console.log(periodWeek);
-
     const user = await User.findByIdAndUpdate(id, {
       periodStart,
       periodDays: periodWeek,

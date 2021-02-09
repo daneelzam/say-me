@@ -4,13 +4,13 @@ import style from './Login.module.css';
 import { loginFetchAC, signUpFetchAc } from '../../../redux/actionCreators/authAC';
 
 function Login() {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [styleAnim, setStyleAnim] = useState(`${style.container}`);
   const containerRef = useRef();
-
-  const dispatch = useDispatch();
 
   function handleName(event) {
     setName(event.target.value);
@@ -50,16 +50,14 @@ function Login() {
                     <input className={style.input} type="text" placeholder="Name" onChange={handleName}/>
                     <input className={style.input} type="text" placeholder="Email" onChange={handleEmail}/>
                     <input className={style.input} type="password" placeholder="Password" onChange={handlePassword}/>
-                    <button className={style.button}>Sign Up</button>
+                    <button className={style.btn}>Sign Up</button>
                 </form>
             </div>
             <div className={`${style.form_container} ${style.sign_in_container}`}>
                 <form className={style.form} onSubmit={loginHandler} >
-                    <h1 className={style.h}>Sign in</h1>
                     <input className={style.input} type="text" placeholder="Email" onChange={handleEmail}/>
                     <input className={style.input} type="password" placeholder="Password" onChange={handlePassword} />
-                    <a className={style.a} href="#">Forgot your password?</a>
-                    <button className={style.button}>Sign In</button>
+                    <button className={style.btn}>Sign In</button>
                 </form>
             </div>
             <div className={style.overlay_container}>
@@ -69,14 +67,14 @@ function Login() {
                         <p className={`${style.p} ${style.overlay_panel_p}`}>
                           To keep connected with us please login with your personal info
                         </p>
-                        <button className={`${style.button_ghost} ${style.button}`} onClick={styleHandler} id="signIn">Sign In</button>
+                        <button className={`${style.btn} ${style.button_ghost}`} onClick={styleHandler} id="signIn">Sign In</button>
                     </div>
                     <div className={`${style.overlay_panel} ${style.overlay_right}`}>
-                        <h1 className={style.h1}>Hello, Friend!</h1>
+                        <h1 className={style.h1}>Hey!</h1>
                         <p className={`${style.p} ${style.overlay_panel_p}`}>
-                          Enter your personal details and start journey with us
+                        If you are not registered on our website yet, then click "Sign Up"
                         </p>
-                        <button className={`${style.button} ${style.button_ghost}`} onClick={styleHandler} id="signUp">Sign Up</button>
+                        <button className={`${style.btn} ${style.button_ghost}`} onClick={styleHandler} id="signUp">Sign Up</button>
                     </div>
                 </div>
             </div>
