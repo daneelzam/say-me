@@ -76,7 +76,7 @@
 	flex-direction: column;
 	padding: 0 50px;
 	height: 100%;
-	text-align: center;
+	/* text-align: center; */
 }
 
 .input {
@@ -184,7 +184,6 @@
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 40px;
-	text-align: center;
 	top: 0;
 	height: 100%;
 	width: 40%;
@@ -214,4 +213,34 @@
 	line-height: 20px;
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
+}
+.input_goal{
+  color: #333;
+  text-transform: capitalize;
+  letter-spacing: 0em;
+  font-size: 1.1em;
+  margin-right:20%;
+}
+.select {
+  font-size: 120%;
+  background-color: #eee;
+  border: none;
+  color: #333;
+  text-transform: capitalize;
+  letter-spacing: 0em;
+}
+.option {
+  background-color: #eee;
+  border: none;
+  color: #333;
+}
+.option:checked {
+  background-color: #eee;
+  border: none;
+  color: #333;
+}
+.option:hover {
+  background-color: rgb(156, 153, 153);
+  border: none;
+  color: rgb(27, 27, 27);
 }
