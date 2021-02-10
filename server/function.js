@@ -14,13 +14,21 @@ mongoose.connect(global, {
 });
 
 export async function sendMailOvulation() {
-  let users = await User.find();
+  const users = await User.find();
+
   const today = new Date().setHours(0o0, 0o0, 0o0, 0o0);
-
   // eslint-disable-next-line max-len
-  users = users.filter((el) => ((el.ovulationDay - today / 1000 <= 691200 ? el : null)));
+  const sendList = [];
+  users.forEach((user) => {
+    user.ovulationDay.forEach((day) => {
+      const dayDate = new Date(day);
+      if ((dayDate - today) / 1000 < 691200 && (dayDate - today) / 1000 > 518400) {
+        sendList.push(user);
+      }
+    });
+  });
 
-  users.map(async (user) => {
+  sendList.map(async (user) => {
     let message;
 
     const messagePos = await Message.create({
@@ -48,33 +56,33 @@ export async function sendMailOvulation() {
 }
 
 export async function sendMailPeriod() {
-  let users = await User.find();
-  const today = new Date();
+  const users = await User.find();
+  const today = new Date().setHours(0o0, 0o0, 0o0, 0o0);
 
-  users = users.filter((el) => {
-    let result;
-    const stdate = new Date(el.periodStart[0][0]);
-    const countDate = stdate.getDate();
-    stdate.setDate(countDate + 21);
-    if (stdate === today) {
-      result = el;
+  const sendList = [];
+  users.forEach((user) => {
+    if (user.periodStart[0] && user.periodStart[0][0]) {
+      const dayDate = new Date(user.periodStart[0][0]);
+      const countDay = dayDate.getDate();
+      dayDate.setDate(countDay + 21);
+      if ((dayDate - today) / 1000 < 86400 && (dayDate - today) / 1000 >= 0) {
+        sendList.push(user);
+      }
     }
-    return result;
   });
+  if (sendList.length > 0) {
+    sendList.map(async (user) => {
+      const message = await Message.create({
+        to: `${user.partnerContact}`,
+        subject: 'Notification from SAY_ME',
+        html: '<strong>Be careful with your bitch she is sick as fuck</strong>',
+      });
 
-  console.log(users);
-
-  users.map(async (user) => {
-    const message = await Message.create({
-      to: `${user.partnerContact}`,
-      subject: 'Notification from SAY_ME',
-      html: '<strong>Be careful with your bitch she is sick as fuck</strong>',
+      return sgMail
+        .send(message)
+        .then(() => console.log('Message sent'))
+        .catch((err) => console.log(err));
     });
-
-    return sgMail
-      .send(message)
-      .then(() => console.log('Message sent'))
-      .catch((err) => console.log(err));
-  });
+  }
 }
-sendMailPeriod().then((res) => console.log(res));
+// sendMailPeriod().then((res) => console.log(res));

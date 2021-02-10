@@ -1,9 +1,4 @@
-import { PARTNER_ADD, GOAL_ADD, PARTNER_ERR } from '../types';
-import { changeContactAC } from './authAC';
-
-export const partnerAC = (email) => ({ type: PARTNER_ADD, payload: email });
-export const pregnantAC = (toGetPregnant) => ({ type: GOAL_ADD, payload: toGetPregnant });
-export const errorAC = (err) => ({ type: PARTNER_ERR, payload: err });
+import { authErrorAC, changeContactAC, changeGoalAC } from './authAC';
 
 // thunk AC
 
@@ -17,7 +12,7 @@ export const partnerFetchAC = (partnerEmail, id) => (dispatch) => {
   })
     .then((response) => (response.status === 200
       ? dispatch(changeContactAC(partnerEmail))
-      : dispatch(errorAC('Something goes wrong!'))));
+      : dispatch(authErrorAC('Something goes wrong!'))));
 };
 
 export const getPregnantFetchAC = (toGetPregnant, id) => (dispatch) => {
@@ -29,6 +24,6 @@ export const getPregnantFetchAC = (toGetPregnant, id) => (dispatch) => {
     body: JSON.stringify({ toGetPregnant })
   })
     .then((response) => (response.status === 200
-      ? dispatch(pregnantAC(toGetPregnant))
-      : dispatch(errorAC('Something goes wrong!'))));
+      ? dispatch(changeGoalAC(toGetPregnant))
+      : dispatch(authErrorAC('Something goes wrong!'))));
 };
