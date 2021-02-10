@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Calendar.module.css';
 import Month from './Month/Month';
 import Weeks from './Weeks/Weeks';
-import { periodDaysFetchAC } from '../../redux/actionCreators/calendarAC';
+import { initCalendarFetchAC, periodDaysFetchAC } from '../../redux/actionCreators/calendarAC';
 
 function Calendar() {
   const user = useSelector((state) => state.auth.user);
@@ -42,6 +42,10 @@ function Calendar() {
       dispatch(periodDaysFetchAC(ovulationDay, chooseDay, periodWeek, id));
     }
   };
+
+  useEffect(() => {
+    dispatch(initCalendarFetchAC(id));
+  }, []);
 
   return (
       <section className={style.container}>

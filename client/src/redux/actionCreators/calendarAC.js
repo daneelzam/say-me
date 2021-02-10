@@ -5,7 +5,8 @@ import {
   SET_MONTH,
   PERIOD_START,
   CHANGE_TYPE_DAY,
-  OVULATION
+  OVULATION,
+  INIT_CALENDAR
 } from '../types';
 
 export const clearLocalStorageAC = () => ({ type: CLEAR_LOCAL_STORAGE });
@@ -15,6 +16,9 @@ export const setMonthAC = (currentMonth) => ({ type: SET_MONTH, payload: current
 export const periodStartAC = (period) => ({ type: PERIOD_START, payload: period });
 export const ovulationAC = (ovulationDay) => ({ type: OVULATION, payload: ovulationDay });
 export const typeOfChosenDayAC = (typeOfDay) => ({ type: CHANGE_TYPE_DAY, payload: typeOfDay });
+// eslint-disable-next-line max-len
+export const initCalendarAC = (periodDays, ovulationDay) => ({ type: INIT_CALENDAR, payload: { periodDays, ovulationDay } });
+
 
 export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (dispatch) => {
   fetch(`${process.env.REACT_APP_URL}/main`, {
@@ -30,4 +34,10 @@ export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (d
       dispatch(periodStartAC(periodWeek));
     }
   });
+};
+
+export const initCalendarFetchAC = (id) => (dispatch) => {
+  fetch(`${process.env.REACT_APP_URL}/main/init/${id}`)
+    .then((response) => (response.json()))
+    .then((data) => dispatch(initCalendarAC(data.periodStart, data.ovulationDay)));
 };
