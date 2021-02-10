@@ -35,7 +35,7 @@ const calendarReducer = (state = preloadState, action) => {
         ...state, periodStart: [...state.periodStart, [state.chooseDay, ...action.payload]]
       };
     case OVULATION:
-      return { ...state, ovulation: [...state.ovulation] };
+      return { ...state, ovulation: [...state.ovulation, action.payload] };
     case CLEAR_LOCAL_STORAGE:
       window.localStorage.removeItem('state');
       return {

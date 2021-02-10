@@ -13,18 +13,21 @@ export const innitialUserAC = () => ({ type: INNITIAL_USER });
 export const chooseDayAC = (currentDate) => ({ type: CHOOSE_DAY, payload: currentDate });
 export const setMonthAC = (currentMonth) => ({ type: SET_MONTH, payload: currentMonth });
 export const periodStartAC = (period) => ({ type: PERIOD_START, payload: period });
-export const ovulationAC = () => ({ type: OVULATION });
+export const ovulationAC = (ovulationDay) => ({ type: OVULATION, payload: ovulationDay });
 export const typeOfChosenDayAC = (typeOfDay) => ({ type: CHANGE_TYPE_DAY, payload: typeOfDay });
 
-export const periodDaysFetchAC = (periodWeek, id) => (dispatch) => {
+export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (dispatch) => {
   fetch(`${process.env.REACT_APP_URL}/main`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ periodWeek, id })
+    body: JSON.stringify({ ovulationDay, periodStart: [chooseDay, ...periodWeek], id })
 
   }).then((response) => {
-    response.status === 200 ? dispatch(periodStartAC(periodWeek)) : null;
+    if (response.status === 200) {
+      dispatch(ovulationAC(ovulationDay));
+      dispatch(periodStartAC(periodWeek));
+    }
   });
 };
