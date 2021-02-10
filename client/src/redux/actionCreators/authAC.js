@@ -28,13 +28,17 @@ export const loginFetchAC = ({ email, password }) => (dispatch) => {
     });
 };
 
-export const signUpFetchAc = ({ name, email, password }) => (dispatch) => {
+export const signUpFetchAc = ({
+  name, email, password, goal
+}) => (dispatch) => {
   fetch(`${process.env.REACT_APP_URL}/auth/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ name, email, password })
+    body: JSON.stringify({
+      name, email, password, goal
+    })
   })
     .then((response) => response.json())
     .then((result) => {

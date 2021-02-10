@@ -10,12 +10,13 @@ const router = express.Router();
 router.route('/signup')
 
   .post(async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, goal } = req.body;
 
     try {
       const user = new User({
         name,
         email,
+        toGetPregnant: goal,
         password: await bcrypt.hash(password, saltRound),
       });
       await user.save();
