@@ -46,7 +46,8 @@ const calendarReducer = (state = preloadState, action) => {
       return {
         ...state,
         periodStart: [],
-        chooseDay: ''
+        chooseDay: '',
+        ovulation: []
       };
     case SET_MONTH:
       return { ...state, month: action.payload };
