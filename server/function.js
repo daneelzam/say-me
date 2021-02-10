@@ -4,33 +4,33 @@ import User from './models/User.js';
 import Message from './models/Message.js';
 
 sgMail.setApiKey('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');
-
 const global = 'mongodb+srv://admin:admin@cluster0.t49xt.mongodb.net/say_me';
 
 mongoose.connect(global, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false,
 });
 
-async function sendMail() {
+export async function sendMailOvulation() {
   let users = await User.find();
+  const today = new Date().setHours(0o0, 0o0, 0o0, 0o0);
 
-  const today = new Date();
-
-  users = users.filter((el) => ((el.ovulationDay - today) / 1000 === 604800 ? el : null));
-
+  // eslint-disable-next-line max-len
+  users = users.filter((el) => ((el.ovulationDay - today / 1000 <= 691200 ? el : null)));
+  console.log(users);
   users.map(async (user) => {
     let message;
 
     const messagePos = await Message.create({
-      to: `${user.partnerContact.toString()}`,
+      to: `${user.partnerContact}`,
       subject: 'Notification from SAY_ME',
       html: '<strong>DO FUCK!</strong>',
     });
 
     const messageNeg = await Message.create({
-      to: `${user.partnerContact.toString()}`,
+      to: `${user.partnerContact}`,
       subject: 'Notification from SAY_ME',
       html: '<strong>DONT FUCK!</strong>',
     });
@@ -47,5 +47,17 @@ async function sendMail() {
   });
 }
 
-// return sgMail.send(message);
-sendMail().then((res) => console.log(res));
+export async function sendMailPeriod() {
+  let users = await User.find();
+  // const today = new Date().setHours(0o0, 0o0, 0o0, 0o0);
+  const today = new Date(2021, 2, 10, 0o0, 0o0, 0o0);
+
+  // eslint-disable-next-line max-len
+
+  // 1814400000 21 день мс
+  users = users.filter((el) => ((el.periodStart[0] + 1814400000 / 1000 === today ? el : null)));
+  console.log(users);
+}
+//
+// export default { sendMailOvulation, sendMailPeriod };
+sendMailPeriod().then((res) => console.log(res));
