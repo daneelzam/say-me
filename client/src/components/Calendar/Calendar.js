@@ -14,6 +14,7 @@ function Calendar() {
   const chooseDay = useSelector((state) => state.calendar.chooseDay);
   const year = useSelector((state) => state.calendar.year);
   const month = useSelector((state) => state.calendar.month);
+  const advices = useSelector((state) => state.calendar.advices);
 
   const activeDay = `${chooseDay.split(' ')[1]} ${chooseDay.split(' ')[2]}`;
   const activeWeekDay = chooseDay.split(' ')[0].slice(0, -1);
@@ -64,7 +65,7 @@ function Calendar() {
                           className={style.btnDis}>Select as start date of cycle</button>
 
               }
-              <p className={`${style.tip}`}>"Tip of the day"</p>
+              <p className={`${style.tip}`}>{advices}</p>
           </div>
         </div>
           <div className={`${style.calendar_col} ${style.rightCol}`}>

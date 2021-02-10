@@ -1,5 +1,6 @@
 import express from 'express';
 import User from '../models/User.js';
+import Advices from '../models/Advices.js';
 
 const router = express.Router();
 
@@ -44,7 +45,19 @@ router.post('/goal/:id', async (req, res) => {
 router.get('/init/:id', async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id);
-  res.json({ periodStart: user.periodStart, ovulationDay: user.ovulationDay });
+  // const advices = await Advices.find();
+  // const defaultAdvice = 'Be carefull with yourself';
+  // const day = new Date();
+  // const dayOfMonth = day.getDate();
+  // if ((user.periodStart.length - 1) < 1) {
+  //   return defaultAdvice;
+  // } else {
+  //     const firstDay = user.periodStart[user.periodStart.length - 1][0];
+  //     for (let i = 0; i < 28; i++)
+  //
+  //         }
+
+  res.json({ periodStart: user.periodStart, ovulationDay: user.ovulationDay, advices: advices[1].text });
 });
 
 export default router;
