@@ -12,6 +12,7 @@ export const CHOOSE_DAY = 'CHOOSE_DAY';
 export const SET_MONTH = 'SET_MONTH';
 export const OVULATION = 'OVULATION';
 export const CHANGE_TYPE_DAY = 'CHANGE_TYPE_DAY';
+export const INIT_CALENDAR = 'INIT_CALENDAR';
 
 // account
 export const PARTNER_ADD = 'PARTNER_ADD';

@@ -12,11 +12,10 @@ function addDays(periodStart, days = 10) {
 router.route('/')
 
   .post(async (req, res) => {
-    const { id, periodStart, periodWeek } = req.body;
+    const { id, periodStart } = req.body;
 
     const user = await User.findByIdAndUpdate(id, {
       periodStart,
-      periodDays: periodWeek,
       // ovulationDay: addDays(periodStart),
     });
     await user.save();
@@ -40,6 +39,12 @@ router.post('/goal/:id', async (req, res) => {
   user.toGetPregnant = toGetPregnant;
   await user.save();
   res.status(200).end();
+});
+
+router.get('/init/:id', async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  res.json({ periodStart: user.periodStart, ovulationDay: user.ovulationDay });
 });
 
 export default router;

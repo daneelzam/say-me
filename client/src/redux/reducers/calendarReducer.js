@@ -1,5 +1,10 @@
 import {
-  PERIOD_START, CLEAR_LOCAL_STORAGE, CHOOSE_DAY, SET_MONTH, CHANGE_TYPE_DAY, OVULATION
+  PERIOD_START,
+  CLEAR_LOCAL_STORAGE,
+  CHOOSE_DAY, SET_MONTH,
+  CHANGE_TYPE_DAY,
+  OVULATION,
+  INIT_CALENDAR
 } from '../types';
 
 const windowState = JSON.parse(window.localStorage.getItem('state'));
@@ -49,6 +54,12 @@ const calendarReducer = (state = preloadState, action) => {
       return { ...state, chooseDay: action.payload };
     case CHANGE_TYPE_DAY:
       return { ...state, typeOfChosenDay: action.payload };
+    case INIT_CALENDAR:
+      return {
+        ...state,
+        ovulation: action.payload.ovulationDay,
+        periodStart: action.payload.periodDays
+      };
     default:
       return state;
   }
