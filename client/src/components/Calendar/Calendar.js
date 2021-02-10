@@ -38,7 +38,8 @@ function Calendar() {
         day.setDate(dayOfMonth + i);
         periodWeek.push(day.toLocaleDateString('en-US', options));
       }
-      dispatch(periodDaysFetchAC(periodWeek, id));
+      const ovulationDay = day.setDate(dayOfMonth + 15).toLocaleDateString('en-US', options);
+      dispatch(periodDaysFetchAC(ovulationDay, chooseDay, periodWeek, id));
     }
   };
 
