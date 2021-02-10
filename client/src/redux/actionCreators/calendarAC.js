@@ -19,7 +19,6 @@ export const typeOfChosenDayAC = (typeOfDay) => ({ type: CHANGE_TYPE_DAY, payloa
 // eslint-disable-next-line max-len
 export const initCalendarAC = (periodDays, ovulationDay) => ({ type: INIT_CALENDAR, payload: { periodDays, ovulationDay } });
 
-
 export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (dispatch) => {
   fetch(`${process.env.REACT_APP_URL}/main`, {
     method: 'POST',
