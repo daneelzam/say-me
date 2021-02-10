@@ -26,3 +26,8 @@
 	box-sizing: border-box;
 	border: 1px solid #f4948a;
 }
+
+.day_td_ovulation{
+	box-sizing: border-box;
+	border: 1px solid #a2d2ff;
+}
