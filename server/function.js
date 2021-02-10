@@ -19,7 +19,7 @@ export async function sendMailOvulation() {
 
   // eslint-disable-next-line max-len
   users = users.filter((el) => ((el.ovulationDay - today / 1000 <= 691200 ? el : null)));
-  console.log(users);
+
   users.map(async (user) => {
     let message;
 
@@ -49,15 +49,32 @@ export async function sendMailOvulation() {
 
 export async function sendMailPeriod() {
   let users = await User.find();
-  // const today = new Date().setHours(0o0, 0o0, 0o0, 0o0);
-  const today = new Date(2021, 2, 10, 0o0, 0o0, 0o0);
+  const today = new Date();
 
-  // eslint-disable-next-line max-len
+  users = users.filter((el) => {
+    let result;
+    const stdate = new Date(el.periodStart[0][0]);
+    const countDate = stdate.getDate();
+    stdate.setDate(countDate + 21);
+    if (stdate === today) {
+      result = el;
+    }
+    return result;
+  });
 
-  // 1814400000 21 день мс
-  users = users.filter((el) => ((el.periodStart[0] + 1814400000 / 1000 === today ? el : null)));
   console.log(users);
+
+  users.map(async (user) => {
+    const message = await Message.create({
+      to: `${user.partnerContact}`,
+      subject: 'Notification from SAY_ME',
+      html: '<strong>Be careful with your bitch she is sick as fuck</strong>',
+    });
+
+    return sgMail
+      .send(message)
+      .then(() => console.log('Message sent'))
+      .catch((err) => console.log(err));
+  });
 }
-//
-// export default { sendMailOvulation, sendMailPeriod };
 sendMailPeriod().then((res) => console.log(res));
