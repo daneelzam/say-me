@@ -7,6 +7,7 @@ function Day({ year, month, date }) {
   const dispatch = useDispatch();
   const periodStart = useSelector((state) => state.calendar.periodStart);
   const chooseDay = useSelector((state) => state.calendar.chooseDay);
+  const ovulationDay = useSelector((state) => state.calendar.ovulation);
 
   const [options] = useState({
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
@@ -46,6 +47,17 @@ function Day({ year, month, date }) {
       setTypeOfDay(() => 'clear');
     }
   }, [periodStart]);
+
+  // ovulationDay style
+  useEffect(() => {
+    ovulationDay.forEach((day) => {
+      if (currentDate.toLocaleDateString('en-US', options) === day) {
+        dayRef.current.classList.add(`${style.day_td_ovulation}`);
+      } else {
+        dayRef.current.classList.remove(`${style.day_td_ovulation}`);
+      }
+    });
+  }, [ovulationDay]);
 
   const setActive = () => {
     dispatch(typeOfChosenDayAC(typeOfDay));
