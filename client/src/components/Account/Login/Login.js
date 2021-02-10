@@ -9,6 +9,7 @@ function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [goal, setGoal] = useState(true);
   const [styleAnim, setStyleAnim] = useState(`${style.container}`);
   const containerRef = useRef();
 
@@ -39,9 +40,13 @@ function Login() {
 
   const signUpHandler = async (event) => {
     event.preventDefault();
-    dispatch(signUpFetchAc({ name, email, password }));
+    dispatch(signUpFetchAc({
+      name, email, password, goal
+    }));
   };
-
+  const goalHandler = (e) => {
+    setGoal(e.target.value);
+  };
   return (
   <section className={style.body_for_login}>
         <div className={styleAnim} ref={containerRef} id="container">
@@ -50,6 +55,13 @@ function Login() {
                     <input className={style.input} type="text" placeholder="Name" onChange={handleName}/>
                     <input className={style.input} type="text" placeholder="Email" onChange={handleEmail}/>
                     <input className={style.input} type="password" placeholder="Password" onChange={handlePassword}/>
+                    <div className={style.input}>
+                    <span className={style.input_goal}>Goal</span>
+                    <select className={style.select} onChange={goalHandler} value={goal}>
+                        <option className={style.option} value={true}>get pregnant</option>
+                        <option className={style.option} value={false}>don't get pregnant</option>
+                    </select>
+                    </div>
                     <button className={style.btn}>Sign Up</button>
                 </form>
             </div>
