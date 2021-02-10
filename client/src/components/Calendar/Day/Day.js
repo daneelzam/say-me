@@ -59,6 +59,16 @@ function Day({ year, month, date }) {
     });
   }, [ovulationDay]);
 
+  // currentDay style
+  useEffect(() => {
+    const today = new Date();
+    if (currentDate.toLocaleDateString('en-US', options) === today.toLocaleDateString('en-US', options)) {
+      dayRef.current.classList.add(`${style.day_td_current}`);
+    } else {
+      dayRef.current.classList.remove(`${style.day_td_current}`);
+    }
+  }, [currentDate]);
+
   const setActive = () => {
     dispatch(typeOfChosenDayAC(typeOfDay));
     dispatch(chooseDayAC(currentDate.toLocaleDateString('en-US', options)));
