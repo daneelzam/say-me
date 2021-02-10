@@ -9,14 +9,14 @@ function Account() {
   const user = useSelector((state) => state.auth.user);
   const toGetPregnant = useSelector((state) => state.account.toGetPregnant);
 
-  const [partnerContactState, setPartnerEmail] = useState(user.partnerContact);
-  const [goalState, setGoalState] = useState(true);
+  const [partnerContactState, setPartnerContactState] = useState(user.partnerContact);
+  const [goalState, setGoalState] = useState(toGetPregnant);
 
   const [showGoalFlag, setshowGoalFlag] = useState(false);
   const [showEmailFlag, setshowEmailFlag] = useState(false);
 
   function handlePartnerPassword(event) {
-    setPartnerEmail(event.target.value);
+    setPartnerContactState(event.target.value);
   }
 
   const pregnancyHandler = () => {
@@ -25,7 +25,7 @@ function Account() {
 
   const goalHandler = (event) => {
     event.preventDefault();
-    dispatch(getPregnantFetchAC(toGetPregnant, user.id));
+    dispatch(getPregnantFetchAC(goalState, user.id));
     setshowGoalFlag((prevState) => !prevState);
   };
 
