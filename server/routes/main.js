@@ -12,11 +12,11 @@ function addDays(periodStart, days = 10) {
 router.route('/')
 
   .post(async (req, res) => {
-    const { id, periodStart } = req.body;
+    const { id, periodStart, ovulationDay } = req.body;
 
     const user = await User.findByIdAndUpdate(id, {
       periodStart,
-      // ovulationDay: addDays(periodStart),
+      ovulationDay,
     });
     await user.save();
     res.status(200).end();
