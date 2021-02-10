@@ -10,7 +10,7 @@ if (windowState && windowState.account) {
     err: null
   };
 } else {
-  preloadState = { toGetPregnant: true, err: null };
+  preloadState = { toGetPregnant: null, err: null };
 }
 
 const accountReducer = (state = preloadState, action) => {
