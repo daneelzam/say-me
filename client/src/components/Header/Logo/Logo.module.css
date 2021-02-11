@@ -22,3 +22,10 @@
       letter-spacing: 0.2em;
       font-size: 0.9em;
   }
+  @media (max-width: 425px){
+    .logo_h1 {
+      font-weight: 700;
+      font-size: 1.5em;
+      margin: 0 auto;
+  }
+  }

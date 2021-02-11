@@ -59,12 +59,14 @@ function Account() {
           : < div className={style.box}>
           <span className={`${style.solid}`}>Goal: </span>
           {user.toGetPregnant
-            ? <span className={style.p}> get pregnant</span>
-            : <span className={style.p}> don't get pregnant</span>}
-                <button
+            ? <span className={style.p}> get pregnant <button
                 className={style.btn}
                 onClick={() => setshowGoalFlag(!showGoalFlag)}
-                ><i className="fas fa-pencil-alt"/></button>
+                ><i className="fas fa-pencil-alt"/></button></span>
+            : <span className={style.p}> don't get pregnant<button
+                className={style.btn}
+                onClick={() => setshowGoalFlag(!showGoalFlag)}
+                ><i className="fas fa-pencil-alt"/></button></span>}
             </div>
         }
 
@@ -85,11 +87,10 @@ function Account() {
         : (<>
           <div className={style.box}>
             <span className={style.solid}>Email partner: </span>
-            <span className={style.p}>{user.partnerContact}</span>
-            <button
+            <span className={style.p}>{user.partnerContact}<button
             className={style.btn}
             onClick={() => setshowEmailFlag(!showEmailFlag)}
-            ><i className="fas fa-pencil-alt"/></button>
+            ><i className="fas fa-pencil-alt"/></button></span>
           </div>
           </>)
       }

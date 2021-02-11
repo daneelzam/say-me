@@ -38,6 +38,7 @@
 
 .ul{
     margin: 0px;
+    padding-left: 0px;
     list-style: none;
 }
 
@@ -69,7 +70,6 @@
     text-decoration: none;
     font-size: 0.7em;
     letter-spacing: 0.25em;
-    height: 5em;
     line-height: 5em;
     outline: 0;
     background-color: rgb(244 148 137);
@@ -113,6 +113,64 @@
 .month {
     display: flex;
     text-transform: uppercase;
-    justify-content: space-around;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
+@media (max-width: 768px) and (min-width: 426px){
+    .month {
+        flex-wrap: wrap;
+    }
+    .btn {
+        line-height: 2em;
+    }
+    .tip{
+        font-size: 20px;
+    }
+}
+@media (max-width: 425px){
+    .month {
+        flex-wrap: wrap;
+    }
+    .btn {
+        line-height: 2em;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    .rightCol{
+        width: 100vw;
+        max-height: 50vh;
+    }
+    .leftCol{
+        width: 100vw;
+    }
+    .calendar{
+        border-radius: 0px;
+        max-width: 100vw;
+        max-height: 100vh;
+        background-color: #ffffff;
+        color: #333333;
+    }
+    .calendar_col{
+        position: static;
+        float: none;
+        height: 260px;
+    }
+    .tip{
+        font-size: 14px;
+    }
+
+    .calendar_h1, .calendar_h2{
+        font-weight: 200;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0px 0px 0px 0px;
+    }
+    .calendar_h1_span{
+        display: inline;
+        padding-left: 5px;
+    }
+    .content{
+        padding: 20px;
+    }
+}

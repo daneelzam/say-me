@@ -34,3 +34,12 @@
           .nav_ul_li_a :hover {
               color: #fff;
           }
+@media (max-width: 375px){
+    .nav_ul_li_a {
+        height: 3em;
+        line-height: 3em;
+    }
+    .nav{
+        width: 90%;
+    }
+}
