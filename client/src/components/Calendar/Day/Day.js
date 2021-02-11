@@ -52,7 +52,6 @@ function Day({ year, month, date }) {
   useEffect(() => {
     ovulationDay.forEach((day) => {
       if (currentDate.toLocaleDateString('en-US', options) === day) {
-        console.log(dayRef.current.classList);
         dayRef.current.classList.add(`${style.day_td_ovulation}`);
       } else {
         dayRef.current.classList.remove(`${style.day_td_ovulation}`);

@@ -14,7 +14,11 @@ let preloadState = {};
 if (windowState && windowState.calendar) {
   preloadState = {
     periodStart: windowState.calendar.periodStart,
-    chooseDay: windowState.calendar.chooseDay,
+    chooseDay: windowState.calendar.chooseDay
+      ? windowState.calendar.chooseDay
+      : new Date().toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      }),
     year: windowState.calendar.year,
     month: windowState.calendar.month,
     ovulation: windowState.calendar.ovulation,
