@@ -21,7 +21,7 @@
     padding-bottom: 4em;
     background: #ffffff;
     border-color: #eeeeee03;
-    max-width: 40%;
+    max-width: 700px;
     min-height: 40vh;
     display: flex;
     flex-direction: column;
@@ -65,4 +65,18 @@
 }
 .input {
   color: rgb(94, 85, 85);
+}
+
+@media (max-width: 425px){
+	.main {
+    min-width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.box{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
 }

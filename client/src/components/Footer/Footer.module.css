@@ -47,3 +47,9 @@ color: inherit;
 .copyright_a:hover {
   color: #fff;
       }
+
+@media (max-width: 425px){
+  .footer {
+    display: none;
+  }
+}

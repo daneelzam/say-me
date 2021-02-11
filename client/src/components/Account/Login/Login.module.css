@@ -76,7 +76,6 @@
 	flex-direction: column;
 	padding: 0 50px;
 	height: 100%;
-	/* text-align: center; */
 }
 
 .input {
@@ -243,4 +242,35 @@
   background-color: rgb(156, 153, 153);
   border: none;
   color: rgb(27, 27, 27);
+}
+
+@media (max-width: 425px){
+	.sign_in_container {
+		width: 100%;
+		height: 50%;
+	}
+	.sign_up_container {
+		width: 100%;
+		height: 50%;
+	}
+	
+	.container.right_panel_active .sign_up_container {
+		transform: translateY(100%);
+	}
+
+	.overlay_container {
+		top: 50%;
+		left: 0;
+		width: 100%;
+		height: 50%;
+	}
+	
+	 .container.right_panel_active .overlay_container{
+		transform: translateY(-100%);
+	}
+
+	.container {
+		border-radius: 0px;
+		min-height: 530px;
+	}
 }
