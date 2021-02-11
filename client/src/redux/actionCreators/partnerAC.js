@@ -3,7 +3,7 @@ import { authErrorAC, changeContactAC, changeGoalAC } from './authAC';
 // thunk AC
 
 export const partnerFetchAC = (partnerEmail, id) => (dispatch) => {
-  fetch(`http://localhost:4000/api/main/${id}`, {
+  fetch(`${process.env.REACT_APP_URL}/main/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -16,7 +16,7 @@ export const partnerFetchAC = (partnerEmail, id) => (dispatch) => {
 };
 
 export const getPregnantFetchAC = (toGetPregnant, id) => (dispatch) => {
-  fetch(`http://localhost:4000/api/main/goal/${id}`, {
+  fetch(`${process.env.REACT_APP_URL}/main/goal/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
