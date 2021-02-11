@@ -17,7 +17,7 @@ export const periodStartAC = (period) => ({ type: PERIOD_START, payload: period 
 export const ovulationAC = (ovulationDay) => ({ type: OVULATION, payload: ovulationDay });
 export const typeOfChosenDayAC = (typeOfDay) => ({ type: CHANGE_TYPE_DAY, payload: typeOfDay });
 // eslint-disable-next-line max-len
-export const initCalendarAC = (periodDays, ovulationDay) => ({ type: INIT_CALENDAR, payload: { periodDays, ovulationDay } });
+export const initCalendarAC = (periodDays, ovulationDay, advices) => ({ type: INIT_CALENDAR, payload: { periodDays, ovulationDay, advices } });
 
 export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (dispatch) => {
   fetch(`${process.env.REACT_APP_URL}/main`, {
@@ -38,5 +38,5 @@ export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (d
 export const initCalendarFetchAC = (id) => (dispatch) => {
   fetch(`${process.env.REACT_APP_URL}/main/init/${id}`)
     .then((response) => (response.json()))
-    .then((data) => dispatch(initCalendarAC(data.periodStart, data.ovulationDay)));
+    .then((data) => dispatch(initCalendarAC(data.periodStart, data.ovulationDay, data.advices)));
 };
