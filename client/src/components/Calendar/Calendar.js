@@ -40,14 +40,14 @@ function Calendar() {
         periodWeek.push(day.toLocaleDateString('en-US', options));
       }
       day.setDate(dayOfMonth + 15);
-      const ovulationDay = day.toLocaleDateString('en-US', options);
-      dispatch(periodDaysFetchAC(ovulationDay, chooseDay, periodWeek, id));
+      const newOvulationDay = day.toLocaleDateString('en-US', options);
+      dispatch(periodDaysFetchAC(newOvulationDay, chooseDay, periodWeek, id));
     }
   };
 
   useEffect(() => {
     dispatch(initCalendarFetchAC(id));
-  }, []);
+  }, [periodStart]);
 
   return (
       <section className={style.container}>
@@ -65,7 +65,7 @@ function Calendar() {
                           className={style.btnDis}>Select as start date of cycle</button>
 
               }
-              <p className={`${style.tip}`}>{advices}</p>
+              <p className={`${style.tip}`}>Tip of the day: {advices}</p>
           </div>
         </div>
           <div className={`${style.calendar_col} ${style.rightCol}`}>

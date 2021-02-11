@@ -34,13 +34,13 @@ export async function sendMailOvulation() {
     const messagePos = await Message.create({
       to: `${user.partnerContact}`,
       subject: 'Notification from SAY_ME',
-      html: '<strong>DO FUCK!</strong>',
+      html: '<strong>Next week the best time to get pregnant. Have fun!</strong>',
     });
 
     const messageNeg = await Message.create({
       to: `${user.partnerContact}`,
       subject: 'Notification from SAY_ME',
-      html: '<strong>DONT FUCK!</strong>',
+      html: '<strong>Be careful! Next week the highest risk of getting pregnant!</strong>',
     });
 
     if (user.toGetPregnant) {
@@ -75,7 +75,7 @@ export async function sendMailPeriod() {
       const message = await Message.create({
         to: `${user.partnerContact}`,
         subject: 'Notification from SAY_ME',
-        html: '<strong>Be careful with your bitch she is sick as fuck</strong>',
+        html: '<strong>Be gentle with your lady. Next week she may have mood swings.</strong>',
       });
 
       return sgMail

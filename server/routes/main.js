@@ -4,12 +4,6 @@ import Advices from '../models/Advices.js';
 
 const router = express.Router();
 
-function addDays(periodStart, days = 10) {
-  const startDay = new Date(periodStart);
-  startDay.setDate(startDay.getDate() + days);
-  return startDay;
-}
-
 router.route('/')
 
   .post(async (req, res) => {
@@ -17,7 +11,9 @@ router.route('/')
 
     const user = await User.findById(id);
     user.periodStart.push(periodStart);
+    user.periodStart.sort((a, b) => (new Date(a[0]) - new Date(b[0])));
     user.ovulationDay.push(ovulationDay);
+    user.ovulationDay.sort((a, b) => (new Date(a) - new Date(b)));
 
     await user.save();
     res.status(200).end();
@@ -46,19 +42,27 @@ router.get('/init/:id', async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id);
   const advices = await Advices.find();
-  // const defaultAdvice = 'Be carefull with yourself';
-  // const day = new Date();
-  // const dayOfMonth = day.getDate();
-  // if ((user.periodStart.length - 1) < 1) {
-  //   return defaultAdvice;
-  // } else {
-  //     const firstDay = user.periodStart[user.periodStart.length - 1][0];
-  //     for (let i = 0; i < 28; i++)
-  //
-  //         }
+  let defaultAdvice;
+  const day = new Date().setHours(0o0, 0o0, 0o0, 0o0);
+  if (user.periodStart.length === 0) {
+    defaultAdvice = 'Be carefull with yourself';
+  } else {
+    let firstDay = user.periodStart[user.periodStart.length - 1][0];
+    firstDay = new Date(firstDay);
+    const diferent = Math.round((day - firstDay) / 86400000);
+    if (diferent > 28) {
+      defaultAdvice = 'Be carefull with yourself';
+    } else {
+      advices.forEach((advice) => {
+        if (advice.name === diferent) {
+          defaultAdvice = advice.text;
+        }
+      });
+    }
+  }
 
   res.json({
-    periodStart: user.periodStart, ovulationDay: user.ovulationDay, advices: advices[1].text,
+    periodStart: user.periodStart, ovulationDay: user.ovulationDay, advices: defaultAdvice,
   });
 });
 
