@@ -48,7 +48,8 @@ function Account() {
           ? (<div className={style.box}>
               <span className={style.solid}>Goal:</span>
                 <form onSubmit={goalHandler}>
-                    <select required onChange={pregnancyHandler} value={goalState}>
+                    <select
+                    className={style.select} required onChange={pregnancyHandler} value={goalState}>
                         <option className={style.p} value={true}>get pregnant</option>
                         <option className={style.p} value={false}>don't get pregnant</option>
                     </select>
@@ -72,7 +73,7 @@ function Account() {
             <form onSubmit={handleAccount}>
               <h1 className={style.solid}>Email partner:</h1>
               <input
-              className={style.p}
+              className={style.input}
               type="text"
               placeholder="Email Partner"
               onChange={handlePartnerPassword}

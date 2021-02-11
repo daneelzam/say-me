@@ -9,7 +9,6 @@
 }
 .p{
   color: rgb(255, 255, 255);
-  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.9em;
@@ -17,7 +16,6 @@
 .box{
   display: flex;
 }
-
 .main {
     margin: 1em auto;
     padding-bottom: 4em;
@@ -44,4 +42,27 @@
     background-color: rgb(244 148 137);
     border-radius: 0.35em;
     border-color: #eeeeee03;
+}
+.select {
+  font-size: 120%;
+  background-color: #f4948a;
+  border: none;
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  letter-spacing: 0em;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.9em;
+}
+.option {
+  background-color: #f4948a;
+  border: none;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.9em;
+}
+.input {
+  color: rgb(94, 85, 85);
 }

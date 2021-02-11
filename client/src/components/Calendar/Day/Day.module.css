@@ -24,12 +24,12 @@
 
 .day_td_period{
 	box-sizing: border-box;
-	border: 1px solid #f4948a;
+	border: 3px solid #f4948a;
 }
 
 .day_td_ovulation{
 	box-sizing: border-box;
-	border: 1px solid #a2d2ff;
+	border: 3px solid #a2d2ff;
 }
 
 .day_td_current{
