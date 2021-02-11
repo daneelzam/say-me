@@ -4,14 +4,14 @@ import User from './models/User.js';
 import Message from './models/Message.js';
 
 sgMail.setApiKey('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');
-const global = 'mongodb+srv://admin:admin@cluster0.t49xt.mongodb.net/say_me';
+// const global = 'mongodb+srv://admin:admin@cluster0.t49xt.mongodb.net/say_me';
 
-mongoose.connect(global, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+// mongoose.connect(global, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false,
+// });
 
 export async function sendMailOvulation() {
   const users = await User.find();
