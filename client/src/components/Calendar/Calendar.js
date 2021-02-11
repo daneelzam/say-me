@@ -43,12 +43,13 @@ function Calendar() {
       day.setDate(dayOfMonth + 15);
       const newOvulationDay = day.toLocaleDateString('en-US', options);
       dispatch(periodDaysFetchAC(newOvulationDay, chooseDay, periodWeek, id));
+      dispatch(initCalendarFetchAC(id));
     }
   };
 
   useEffect(() => {
     dispatch(initCalendarFetchAC(id));
-  }, [periodStart]);
+  }, []);
 
   return (
       <section className={style.container}>

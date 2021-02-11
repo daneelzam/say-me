@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 import Advices from './Advices.js';
 
-const global = 'mongodb+srv://admin:admin@cluster0.t49xt.mongodb.net/say_me';
+// const global = 'mongodb+srv://admin:admin@cluster0.t49xt.mongodb.net/say_me';
+const local = 'mongodb://localhost:27017/tellme';
 
-mongoose.connect(global, {
+mongoose.connect(local, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -133,6 +134,5 @@ async function seeder() {
   }
 }
 
-//
-// seeder().then(() => console.log('ok'))
-//   .catch(() => console.log('bad'));
+seeder().then(() => console.log('ok'))
+  .catch(() => console.log('bad'));

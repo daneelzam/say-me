@@ -52,7 +52,9 @@ const calendarReducer = (state = preloadState, action) => {
       return {
         ...state,
         periodStart: [],
-        chooseDay: '',
+        chooseDay: new Date().toLocaleDateString('en-US', {
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        }),
         ovulation: []
       };
     case SET_MONTH:

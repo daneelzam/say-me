@@ -20,6 +20,12 @@ export const initCalendarAC = (periodDays, ovulationDay, advices) => (
   { type: INIT_CALENDAR, payload: { periodDays, ovulationDay, advices } }
 );
 
+export const initCalendarFetchAC = (id) => (dispatch) => {
+  fetch(`${process.env.REACT_APP_URL}/main/init/${id}`)
+    .then((response) => (response.json()))
+    .then((data) => dispatch(initCalendarAC(data.periodStart, data.ovulationDay, data.advices)));
+};
+
 export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (dispatch) => {
   fetch(`${process.env.REACT_APP_URL}/main`, {
     method: 'POST',
@@ -34,10 +40,4 @@ export const periodDaysFetchAC = (ovulationDay, chooseDay, periodWeek, id) => (d
       dispatch(periodStartAC(periodWeek));
     }
   });
-};
-
-export const initCalendarFetchAC = (id) => (dispatch) => {
-  fetch(`${process.env.REACT_APP_URL}/main/init/${id}`)
-    .then((response) => (response.json()))
-    .then((data) => dispatch(initCalendarAC(data.periodStart, data.ovulationDay, data.advices)));
 };
