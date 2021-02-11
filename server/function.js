@@ -33,13 +33,13 @@ export async function sendMailOvulation() {
 
     const messagePos = await Message.create({
       to: `${user.partnerContact}`,
-      subject: 'Notification from SAY_ME',
+      subject: 'Notification from TELL_ME',
       html: '<strong>Next week the best time to get pregnant. Have fun!</strong>',
     });
 
     const messageNeg = await Message.create({
       to: `${user.partnerContact}`,
-      subject: 'Notification from SAY_ME',
+      subject: 'Notification from TELL_ME',
       html: '<strong>Be careful! Next week the highest risk of getting pregnant!</strong>',
     });
 
@@ -74,7 +74,7 @@ export async function sendMailPeriod() {
     sendList.map(async (user) => {
       const message = await Message.create({
         to: `${user.partnerContact}`,
-        subject: 'Notification from SAY_ME',
+        subject: 'Notification from TELL_ME',
         html: '<strong>Be gentle with your lady. Next week she may have mood swings.</strong>',
       });
 
