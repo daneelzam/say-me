@@ -53,11 +53,12 @@ function Day({ year, month, date }) {
     ovulationDay.forEach((day) => {
       if (currentDate.toLocaleDateString('en-US', options) === day) {
         dayRef.current.classList.add(`${style.day_td_ovulation}`);
-      } else {
-        dayRef.current.classList.remove(`${style.day_td_ovulation}`);
+        if (currentDate.toLocaleDateString('en-US', options) === chooseDay) {
+          dispatch(typeOfChosenDayAC('ovulation'));
+        }
       }
     });
-  }, [ovulationDay]);
+  }, [ovulationDay, chooseDay]);
 
   // currentDay style
   useEffect(() => {
