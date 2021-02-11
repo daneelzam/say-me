@@ -10,7 +10,9 @@ const router = express.Router();
 router.route('/signup')
 
   .post(async (req, res) => {
-    const { name, email, password, goal } = req.body;
+    const {
+      name, email, password, goal,
+    } = req.body;
 
     try {
       const user = new User({
@@ -38,7 +40,11 @@ router.route('/login')
         // eslint-disable-next-line no-underscore-dangle
         res.json({
           user: {
-            name: user.name, email: user.email, id: user._id, partnerContact: user.partnerContact,
+            name: user.name,
+            email: user.email,
+            id: user._id,
+            partnerContact: user.partnerContact,
+            toGetPregnant: user.toGetPregnant,
           },
         });
       }

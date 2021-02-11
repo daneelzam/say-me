@@ -1,5 +1,5 @@
 import {
-  AUTH_SUCCESSFULLY, LOGOUT, AUTH_ERROR, CHANGE_CONTACT
+  AUTH_SUCCESSFULLY, LOGOUT, AUTH_ERROR, CHANGE_CONTACT, GOAL_ADD
 } from '../types';
 
 export const authSuccessfullyAC = (user) => ({ type: AUTH_SUCCESSFULLY, payload: user });
@@ -7,6 +7,9 @@ export const logoutAC = () => ({ type: LOGOUT });
 export const authErrorAC = (error) => ({ type: AUTH_ERROR, payload: error });
 export const changeContactAC = (patrnerContact) => ({
   type: CHANGE_CONTACT, payload: patrnerContact
+});
+export const changeGoalAC = (toGetPregnant) => ({
+  type: GOAL_ADD, payload: toGetPregnant
 });
 
 // THUNK!!
@@ -51,5 +54,8 @@ export const signUpFetchAc = ({
 };
 
 export const logoutFetchAC = () => (dispatch) => {
-  fetch(`${process.env.REACT_APP_URL}/auth/logout`).then((response) => (response.status === 200 ? dispatch(logoutAC()) : authErrorAC('Server error')));
+  fetch(`${process.env.REACT_APP_URL}/auth/logout`)
+    .then((response) => (response.status === 200
+      ? dispatch(logoutAC())
+      : authErrorAC('Server error')));
 };

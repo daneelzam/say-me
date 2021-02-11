@@ -7,10 +7,9 @@ function Account() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth.user);
-  const toGetPregnant = useSelector((state) => state.account.toGetPregnant);
 
   const [partnerContactState, setPartnerEmail] = useState(user.partnerContact);
-  const [goalState, setGoalState] = useState(toGetPregnant);
+  const [goalState, setGoalState] = useState(user.toGetPregnant);
 
   const [showGoalFlag, setshowGoalFlag] = useState(false);
   const [showEmailFlag, setshowEmailFlag] = useState(false);
@@ -58,7 +57,7 @@ function Account() {
             </div>)
           : < div className={style.box}>
           <span className={`${style.solid}`}>Goal: </span>
-          {toGetPregnant
+          {user.toGetPregnant
             ? <span className={style.p}> get pregnant</span>
             : <span className={style.p}> don't get pregnant</span>}
                 <button
