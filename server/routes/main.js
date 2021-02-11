@@ -45,7 +45,7 @@ router.post('/goal/:id', async (req, res) => {
 router.get('/init/:id', async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id);
-  // const advices = await Advices.find();
+  const advices = await Advices.find();
   // const defaultAdvice = 'Be carefull with yourself';
   // const day = new Date();
   // const dayOfMonth = day.getDate();
@@ -57,7 +57,9 @@ router.get('/init/:id', async (req, res) => {
   //
   //         }
 
-  res.json({ periodStart: user.periodStart, ovulationDay: user.ovulationDay, advices: advices[1].text });
+  res.json({
+    periodStart: user.periodStart, ovulationDay: user.ovulationDay, advices: advices[1].text,
+  });
 });
 
 export default router;
