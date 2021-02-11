@@ -15,6 +15,7 @@ function Calendar() {
   const year = useSelector((state) => state.calendar.year);
   const month = useSelector((state) => state.calendar.month);
   const advices = useSelector((state) => state.calendar.advices);
+  const typeofDay = useSelector((state) => state.calendar.typeOfChosenDay);
 
   const activeDay = `${chooseDay.split(' ')[1]} ${chooseDay.split(' ')[2]}`;
   const activeWeekDay = chooseDay.split(' ')[0].slice(0, -1);
@@ -56,7 +57,7 @@ function Calendar() {
           <div className={`${style.content}`}>
             <h1 className={`${style.calendar_h1} date`}>{activeDay}<span className={style.calendar_h1_span}>{activeWeekDay}</span></h1>
             <div className={style.notes}>
-              <p>Information about active date</p>
+                <p>Information about active date: {typeofDay === 'cycle' ? <p>Today your cycle day</p> : null}</p>
             </div>
               { typeOfChosenDay === 'clear'
                 ? <button onClick = {startPeriod}
